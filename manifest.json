@@ -1,0 +1,25 @@
+{
+  "name": "පදරූපසිද්ධි - පාළි ව්‍යාකරණ සංහිතා",
+  "short_name": "රූපසිද්ධි",
+  "description": "කච්චායන සම්ප්‍රදායික පදරූපසිද්ධි පාළි ව්‍යාකරණ සහ ෂඩාකාර විමර්ශන පද්ධතිය",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FAF6EE",
+  "theme_color": "#6B1D2F",
+  "orientation": "any",
+  "lang": "si",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

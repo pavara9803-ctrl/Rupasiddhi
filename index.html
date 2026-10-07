@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="si">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ෂඩාකාරය සහිත රූපසිද්ධි පද සාධනය</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+Sinhala:wght@400;500;600;700&family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+
+<!-- PWA Manifest & Meta Tags -->
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#6B1D2F">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="රූපසිද්ධි">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+
+<!-- Stylesheets -->
+<link rel="stylesheet" href="css/themes.css">
+<link rel="stylesheet" href="css/main.css">
+<link rel="stylesheet" href="css/shadakara.css">
+</head>
+<body data-theme="intro-shadakara">
+
+    <!-- ප්‍රධාන Header තීරුව -->
+    <header class="app-header" id="mainHeader">
+        <div class="header-container">
+            <div class="brand-identity">
+                <span class="dhamma-wheel" aria-hidden="true">☸</span>
+                <div class="brand-text">
+                    <h1 class="main-title">පද රූපසිද්ධි සංහිතා</h1>
+                    <p class="sub-title">ත්‍රිපිටක පාළි ව්‍යාකරණ, ෂඩාකාර විමර්ශන හා පද සාධනය</p>
+                </div>
+            </div>
+
+            <div class="search-box-wrapper">
+                <span class="search-icon">🔍</span>
+                <input 
+                    type="search" 
+                    id="globalSearchInput" 
+                    placeholder="සූත්‍රයක්, පදයක්, සාධනයක් හෝ විධියක් සොයන්න..." 
+                    autocomplete="off"
+                    aria-label="සූත්‍ර හෝ පද සොයන්න"
+                >
+                <kbd class="search-shortcut">Ctrl + K</kbd>
+            </div>
+        </div>
+    </header>
+
+    <!-- ප්‍රධාන Layout Grid -->
+    <div class="layout-container">
+        
+        <!-- වම්පස නාවික පුවරුව -->
+        <aside class="sidebar-nav" aria-label="ඛාණ්ඩ හා සූත්‍ර වර්ගීකරණය">
+            
+            <!-- 00. ෂඩාකාර හැඳින්වීම -->
+            <div class="intro-section-block">
+                <button type="button" class="intro-card-btn active" id="btnShadakaraIntro">
+                    <span class="intro-icon">⚜️</span>
+                    <div class="intro-btn-text">
+                        <strong>0. ෂඩාකාරය හැඳින්වීම</strong>
+                        <small>පද සාධන සවැදෑරුම් නියාමය</small>
+                    </div>
+                </button>
+            </div>
+
+            <div class="section-divider"></div>
+
+            <!-- ඛාණ්ඩ -> අනුඛාණ්ඩ -> සූත්‍ර Nested Tree -->
+            <div class="khanda-group">
+                <h2 class="sidebar-title">🗂️ ඛාණ්ඩ වර්ගීකරණය</h2>
+                <nav class="khanda-tree-nav" id="khandaListNav" role="tablist">
+                    <!-- JavaScript මඟින් ගොඩනැගේ -->
+                </nav>
+            </div>
+        </aside>
+
+        <!-- දකුණුපස ප්‍රධාන කාර්යාල පුවරුව -->
+        <main class="main-viewport" id="mainViewport">
+            
+            <!-- 1. ෂඩාකාරය හැඳින්වීමේ View එක -->
+            <section class="content-panel view-intro" id="viewIntroPanel">
+                <!-- JavaScript මඟින් inject වේ -->
+            </section>
+
+            <!-- 2. සූත්‍ර හා පදසාධන View එක -->
+            <section class="content-panel view-sutta" id="viewSuttaPanel" style="display: none;">
+                
+                <!-- සූත්‍රයේ මූලික විස්තර පුවරුව -->
+                <div class="panel-card sutta-banner-card">
+                    <div class="tag-row">
+                        <span class="badge badge-khanda" id="currentKhandaBadge">--</span>
+                        <span class="badge badge-subkhanda" id="currentSubKhandaBadge">--</span>
+                    </div>
+                    <h2 class="sutta-heading" id="displaySuttaTitle">--</h2>
+                    <div class="sutta-vutti-box">
+                        <span class="vutti-label">සූත්‍ර වෘත්තිය (පාළි):</span>
+                        <p class="vutti-text" id="displaySuttaVutti">--</p>
+                    </div>
+                </div>
+
+                <!-- ෂඩාකාර පද විමර්ශනය (රූපයේ රතු කොටු තුළ පාලි පාඨ සහිතව) -->
+                <div class="panel-card">
+                    <h3 class="section-heading">
+                        <span class="heading-icon">⚜️</span> ෂඩාකාර පද විමර්ශනය (Shadakara Analysis)
+                    </h3>
+                    <div class="shadakara-dynamic-grid" id="displayShadakaraGrid">
+                        <!-- කාඩ්පත් 6 මෙහි render වේ -->
+                    </div>
+                </div>
+
+                <!-- සූත්‍රයේ අතිරේක ව්‍යාකරණ තොරතුරු පුවරුව -->
+                <div class="panel-card" id="extraSuttaDetailsBlock">
+                    <!-- අතිරේක තොරතුරු මෙහි inject වේ -->
+                </div>
+
+                <!-- පියවරෙන් පියවර පද සාධන කාර්යාලය -->
+                <div class="panel-card derivation-card">
+                    <div class="derivation-header">
+                        <h3 class="section-heading">
+                            <span class="heading-icon">📜</span> පියවරෙන් පියවර පද සාධනය (රූපසිද්ධි ක්‍රමය)
+                        </h3>
+                    </div>
+
+                    <div class="example-tabs-list" id="exampleTabsNav" role="tablist">
+                        <!-- පද tabs -->
+                    </div>
+
+                    <div class="table-responsive">
+                        <table class="data-table derivation-table">
+                            <thead>
+                                <tr>
+                                    <th style="width: 50px;">අංකය</th>
+                                    <th>සාධන පියවර / ස්වරූපය (ලෝප කැපීම් සහිතව)</th>
+                                    <th>යෙදුණු සූත්‍රය / විධිය</th>
+                                </tr>
+                            </thead>
+                            <tbody id="derivationStepsBody">
+                                <!-- පියවර පේළි -->
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="siddha-result-box" id="siddhaResultBox">
+                        <span class="result-label">සිද්ධ වූ පදය:</span>
+                        <span class="result-word" id="displayFinalWord">--</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Data Scripts (වෙන වෙනම පහසුවෙන් කළමනාකරණය කළ හැකි ගොනු) -->
+   <script src="data/0_shadakara_intro/shadakara_details.js"></script>
+    <script src="data/1_sandhi/01_sanna.js"></script>
+    <script src="data/1_sandhi/02_sara.js"></script>
+
+<!-- Rendering View Script -->
+<script src="js/shadakara-view.js"></script>
+
+    <!-- Main Controller Logic -->
+    <script src="js/app.js"></script>
+
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('./sw.js')
+            .then((reg) => console.log('Service Worker සාර්ථකව ලියාපදිංචි විය:', reg.scope))
+            .catch((err) => console.error('Service Worker ලියාපදිංචි වීමේ දෝෂය:', err));
+        });
+      }
+    </script>
+  </body>
+</html>
