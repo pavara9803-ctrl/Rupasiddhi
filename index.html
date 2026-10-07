@@ -27,29 +27,30 @@
 <body data-theme="intro-shadakara">
 
     <!-- ප්‍රධාන Header තීරුව -->
-    <header class="app-header" id="mainHeader">
-        <div class="header-container">
-            <div class="brand-identity">
-                <span class="dhamma-wheel" aria-hidden="true">☸</span>
-                <div class="brand-text">
-                    <h1 class="main-title">පද රූපසිද්ධි සංහිතා</h1>
-                    <p class="sub-title">ත්‍රිපිටක පාළි ව්‍යාකරණ, ෂඩාකාර විමර්ශන හා පද සාධනය</p>
-                </div>
-            </div>
-
-            <div class="search-box-wrapper">
-                <span class="search-icon">🔍</span>
-                <input 
-                    type="search" 
-                    id="globalSearchInput" 
-                    placeholder="සූත්‍රයක්, පදයක්, සාධනයක් හෝ විධියක් සොයන්න..." 
-                    autocomplete="off"
-                    aria-label="සූත්‍ර හෝ පද සොයන්න"
-                >
-                <kbd class="search-shortcut">Ctrl + K</kbd>
+ <header class="app-header">
+    <div class="header-container">
+        <!-- තනි Brand Identity කොටස (Toggle බොත්තම, ධර්ම චක්‍රය සහ නම පමණි) -->
+        <div class="brand-identity">
+            <button id="btnToggleSidebar" class="sidebar-toggle-btn" aria-label="Toggle Sidebar" title="මෙනුව සඟවන්න/පෙන්වන්න">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </button>
+            <div class="dhamma-wheel-badge">☸</div>
+            <div class="brand-text">
+                <h1 class="main-title">පදරූපසිද්ධි සංහිතා</h1>
+                <span class="sub-title">ත්‍රිපිටක පාළි ව්‍යාකරණ, ෂඩාකාර විමර්ශන හා පද සාධන පද්ධතිය</span>
             </div>
         </div>
-    </header>
+
+        <!-- සෙවුම් තීරුව (Search Box) -->
+        <div class="search-box-wrapper">
+            <span class="search-icon">🔍</span>
+            <input type="text" id="globalSearchInput" placeholder="සූත්‍රයක්, පදයක්, සාධනයක් හෝ විධියක් සොයන්න..." autocomplete="off">
+            <span class="search-shortcut">Ctrl + K</span>
+        </div>
+    </div>
+</header>
 
     <!-- ප්‍රධාන Layout Grid -->
     <div class="layout-container">
