@@ -1,4 +1,6 @@
-const CACHE_NAME = 'pada-rupasiddhi-v1';
+
+
+const CACHE_NAME = 'pada-rupasiddhi-v3';
 
 // Offline භාවිතය සඳහා Cache කරගත යුතු සියලුම අත්‍යවශ්‍ය ගොනු ලැයිස්තුව
 const ASSETS_TO_CACHE = [
