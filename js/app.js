@@ -584,4 +584,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     showShadakaraIntro();
+
+    const btnToggleSidebar = document.getElementById('btnToggleSidebar');
+    const sidebarNav = document.querySelector('.sidebar-nav');
+    const layoutContainer = document.querySelector('.layout-container');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    if (btnToggleSidebar) {
+        btnToggleSidebar.addEventListener('click', () => {
+            if (window.innerWidth <= 1024) {
+                // කුඩා තිර / Tablet වලදී Drawer ආකෘතියෙන් පෙන්වීම
+                if (sidebarNav) sidebarNav.classList.toggle('drawer-open');
+                if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
+            } else {
+                // පරිගණක තිරවලදී සඟවා Viewport එකට සම්පූර්ණ ඉඩ ලබාදීම
+                if (layoutContainer) layoutContainer.classList.toggle('sidebar-hidden');
+            }
+        });
+    }
+
+    // Overlay එක ක්ලික් කළ විට Drawer එක වැසීම
+    if (sidebarOverlay) {
+        sidebarOverlay.addEventListener('click', () => {
+            if (sidebarNav) sidebarNav.classList.remove('drawer-open');
+            sidebarOverlay.classList.remove('active');
+        });
+    }
+
+    // ... app.js හි පවතින අනෙකුත් ආරම්භක කේත එලෙසම දිගටම පවතී ...
 });
