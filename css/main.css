@@ -1,1 +1,743 @@
+/* ==========================================================================
+   පද රූපසිද්ධි සංහිතා - ප්‍රධාන මෝස්තර පත්‍රිකාව (css/main.css)
+   ========================================================================== */
 
+/* 0. Core Variables Fallback */
+:root {
+    --header-height: 70px;
+    --sidebar-width: 320px;
+    --theme-primary: #6B1D2F;
+    --theme-primary-dark: #4A0E17;
+    --theme-primary-glow: rgba(107, 29, 47, 0.15);
+    --theme-accent: #C59B27;
+    --theme-accent-light: #F4E7BE;
+    --theme-light: #FDF9EE;
+    --surface-soft: #FAF6EE;
+    --border-soft: #E2D7C3;
+    --border-strong: #C59B27;
+    --text-dark: #2B2523;
+    --text-muted: #736965;
+    --radius-sm: 6px;
+    --radius-md: 10px;
+    --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.05);
+    --font-sinhala: 'Noto Serif Sinhala', 'Iskoola Pota', serif;
+    --font-brand: 'Cinzel', 'Noto Serif Sinhala', serif;
+}
+
+/* Reset & Base Setup */
+*, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: var(--font-sinhala);
+    color: var(--text-dark);
+    background: radial-gradient(circle at 10% 20%, #FAF6EE 0%, #F5EDE0 90%);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+}
+
+/* 1. Header Area (Glassmorphic Bar) */
+.app-header {
+    height: var(--header-height);
+    background: rgba(255, 255, 255, 0.88);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1.5px solid var(--border-soft);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.03);
+}
+
+.header-container {
+    max-width: 1600px;
+    margin: 0 auto;
+    height: 100%;
+    padding: 0 1.8rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.brand-identity {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.dhamma-wheel,
+.dhamma-wheel-badge {
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, var(--theme-primary) 0%, var(--theme-primary-dark) 100%);
+    color: var(--theme-accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+    font-size: 1.6rem;
+    box-shadow: 0 4px 12px var(--theme-primary-glow);
+    border: 1px solid var(--theme-accent);
+}
+
+.brand-text .main-title {
+    font-family: var(--font-brand);
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--theme-primary);
+    letter-spacing: 0.5px;
+    line-height: 1.2;
+}
+
+.brand-text .sub-title {
+    font-size: 0.82rem;
+    color: var(--text-muted);
+}
+
+/* Search Box */
+.search-box-wrapper {
+    position: relative;
+    width: 380px;
+}
+
+.search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.95rem;
+    color: var(--text-muted);
+}
+
+.search-box-wrapper input {
+    width: 100%;
+    height: 42px;
+    background: var(--surface-soft);
+    border: 1.5px solid var(--border-soft);
+    border-radius: 25px;
+    padding: 0 4rem 0 2.5rem;
+    font-family: var(--font-sinhala);
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    transition: all 0.25s ease;
+}
+
+.search-box-wrapper input:focus {
+    outline: none;
+    border-color: var(--theme-accent);
+    background: #FFF;
+    box-shadow: 0 0 0 4px var(--theme-primary-glow);
+}
+
+.search-shortcut {
+    position: absolute;
+    right: 0.8rem;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #ECE5D8;
+    border: 1px solid #D9CEBD;
+    font-size: 0.72rem;
+    padding: 0.15rem 0.45rem;
+    border-radius: 4px;
+    color: var(--text-muted);
+}
+
+/* 2. Layout Structure */
+.layout-container {
+    max-width: 1600px;
+    width: 100%;
+    margin: 1.5rem auto;
+    padding: 0 1.5rem;
+    display: grid;
+    grid-template-columns: var(--sidebar-width) minmax(0, 1fr);
+    gap: 1.8rem;
+    align-items: start;
+    flex: 1;
+}
+
+/* 3. Left Sidebar Navigation */
+.sidebar-nav {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1.5px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.2rem;
+    box-shadow: var(--shadow-soft);
+    position: sticky;
+    top: calc(var(--header-height) + 1.5rem);
+    max-height: calc(100vh - var(--header-height) - 3rem);
+    overflow-y: auto;
+}
+
+.sidebar-nav::-webkit-scrollbar {
+    width: 6px;
+}
+.sidebar-nav::-webkit-scrollbar-thumb {
+    background: var(--border-soft);
+    border-radius: 3px;
+}
+
+.sidebar-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 0.8px;
+    margin-bottom: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ==========================================================================
+   0. ෂඩාකාරය හැඳින්වීම - පැහැදිලි හා ආකර්ෂණීය බොත්තම් මෝස්තරය
+   ========================================================================== */
+
+.intro-section-block {
+    margin-bottom: 0.5rem;
+}
+
+.intro-card-btn {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1rem 1.1rem;
+    background: linear-gradient(135deg, #FFFDF8 0%, #F5ECDA 100%);
+    border: 1.8px solid var(--border-strong);
+    border-radius: 10px;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.25s ease;
+    box-shadow: 0 3px 10px rgba(107, 29, 47, 0.08);
+}
+
+/* Icon එක විශාල කර ඉස්මතු කිරීම */
+.intro-icon {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.15));
+}
+
+.intro-btn-text {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+}
+
+/* ප්‍රධාන මාතෘකාව පැහැදිලි හා විශාල කිරීම */
+.intro-btn-text strong {
+    font-family: var(--font-sinhala);
+    font-size: 1.08rem;
+    font-weight: 700;
+    color: var(--theme-primary);
+    letter-spacing: 0.2px;
+    line-height: 1.3;
+}
+
+/* උප මාතෘකාව */
+.intro-btn-text small {
+    font-family: var(--font-sinhala);
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #6E5A44;
+    line-height: 1.2;
+}
+
+/* Hover සහ Active (තෝරාගත් විට) - මෙරූන් පසුබිම මත රන්වන් අකුරු පැහැදිලිව පෙන්වීම */
+.intro-card-btn.active,
+.intro-card-btn:hover {
+    background: linear-gradient(135deg, #6B1D2F 0%, #4A0E17 100%) !important;
+    border-color: #D4AF37 !important;
+    box-shadow: 0 4px 14px rgba(107, 29, 47, 0.35) !important;
+    transform: translateY(-1px);
+}
+
+.intro-card-btn.active .intro-btn-text strong,
+.intro-card-btn:hover .intro-btn-text strong {
+    color: #FFF9E6 !important; /* දීප්තිමත් රන්වන් සුදු පැහැය */
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+.intro-card-btn.active .intro-btn-text small,
+.intro-card-btn:hover .intro-btn-text small {
+    color: #E6CE93 !important; /* රන්වන් පැහැය */
+}
+
+.section-divider {
+    height: 1px;
+    background: var(--border-soft);
+    margin: 1.2rem 0;
+}
+
+/* Tree Navigation */
+.khanda-tree-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.khanda-node {
+    display: flex;
+    flex-direction: column;
+}
+
+.khanda-tab {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0.9rem;
+    background: #FFF;
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-sinhala);
+    font-size: 0.94rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.khanda-tab:hover {
+    background: var(--surface-soft);
+    border-color: var(--theme-accent);
+    color: var(--theme-primary);
+}
+
+.khanda-tab.active {
+    background: var(--theme-light);
+    border-color: var(--theme-primary);
+    color: var(--theme-primary);
+    box-shadow: inset 3px 0 0 var(--theme-primary);
+}
+
+.subkhanda-tree-container {
+    display: none;
+    flex-direction: column;
+    padding-left: 0.8rem;
+    margin-top: 0.3rem;
+    gap: 0.3rem;
+}
+
+.subkhanda-tree-container.expanded {
+    display: flex;
+}
+
+.subkhanda-tree-btn {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.55rem 0.8rem;
+    background: transparent;
+    border: 1px dashed var(--border-soft);
+    border-radius: 6px;
+    font-family: var(--font-sinhala);
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.subkhanda-tree-btn:hover, .subkhanda-tree-btn.active {
+    background: #FFF;
+    border-color: var(--theme-accent);
+    color: var(--theme-primary);
+    font-weight: 600;
+}
+
+.sutta-sub-list {
+    display: none;
+    list-style: none;
+    padding-left: 0.6rem;
+    margin-top: 0.3rem;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.sutta-sub-list.expanded {
+    display: flex;
+}
+
+.sutta-sub-item {
+    padding: 0.45rem 0.75rem;
+    border-radius: 5px;
+    font-size: 0.86rem;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.15s ease;
+    border-left: 2px solid transparent;
+}
+
+.sutta-sub-item:hover {
+    background: #ECE5D8;
+    color: var(--theme-primary);
+}
+
+.sutta-sub-item.active {
+    background: #FFF;
+    color: var(--theme-primary);
+    font-weight: 700;
+    border-left-color: var(--theme-primary);
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+}
+
+/* 4. Right Main Viewport & Fixed Single Column Views */
+.main-viewport {
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+}
+
+/* කාඩ්පත් තිරස්ව හිරවීම වළක්වන ප්‍රධාන නීතිය */
+.content-panel,
+#viewIntroPanel,
+#viewSuttaPanel {
+    display: flex;
+    flex-direction: column; /* සියලු පැනල සිරස්ව එකිනෙක යටින් පමණක් පෙළගැසීම */
+    gap: 1.5rem;
+    width: 100%;
+    min-width: 0;
+}
+
+.panel-card {
+    background: #FFF;
+    border: 1.5px solid var(--border-soft);
+    border-radius: var(--radius-md);
+    padding: 1.6rem;
+    box-shadow: var(--shadow-soft);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+}
+
+.section-heading {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--theme-primary);
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 1.2rem;
+    border-bottom: 1px solid var(--border-soft);
+    padding-bottom: 0.6rem;
+}
+
+/* ඡේද Justify කිරීම */
+p,
+.hero-body-text,
+.vutti-text,
+.shad-card-desc,
+.text-justified {
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* Sutta Top Banner */
+.sutta-banner-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FAF5EA 100%);
+    border-top: 5px solid var(--theme-primary);
+}
+
+.tag-row {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.8rem;
+}
+
+.badge {
+    padding: 0.25rem 0.7rem;
+    border-radius: 20px;
+    font-size: 0.78rem;
+    font-weight: 600;
+}
+
+.badge-khanda {
+    background: var(--theme-primary);
+    color: #FFF;
+}
+
+.badge-subkhanda {
+    background: var(--theme-accent);
+    color: #FFF;
+}
+
+.sutta-heading {
+    font-size: 1.45rem;
+    color: var(--theme-primary);
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+}
+
+.sutta-vutti-box {
+    background: #FFFDF9;
+    border: 1px dashed var(--theme-accent);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.2rem;
+}
+
+.vutti-label {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--theme-accent);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.vutti-text {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #4D121D;
+    font-weight: 600;
+}
+
+/* ෂඩාකාර කාඩ්පත් 6 (සූත්‍ර පුවරුවේ) */
+.shadakara-dynamic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.2rem;
+}
+
+.shad-aspect-card {
+    background: #FAF8F5;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.shad-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.shad-number-badge {
+    background: var(--theme-primary);
+    color: #FFF;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
+.shad-card-title {
+    font-size: 1.05rem;
+    color: var(--theme-primary);
+    font-weight: 700;
+}
+
+.shad-lakkhana-box {
+    background: #FFF;
+    border-left: 3px solid var(--theme-accent);
+    padding: 0.5rem 0.8rem;
+    border-radius: 4px;
+    font-size: 0.92rem;
+    color: #702604;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.shad-card-desc {
+    font-size: 0.92rem;
+    line-height: 1.7;
+    color: var(--text-dark);
+}
+
+/* Derivation Workspace Table */
+.example-tabs-list {
+    display: flex;
+    gap: 0.5rem;
+    overflow-x: auto;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.3rem;
+}
+
+.example-tab-btn {
+    background: var(--surface-soft);
+    border: 1px solid var(--border-soft);
+    border-radius: 20px;
+    padding: 0.4rem 1.1rem;
+    font-family: var(--font-sinhala);
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--text-dark);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.example-tab-btn.active {
+    background: var(--theme-primary);
+    color: #FFF;
+    border-color: var(--theme-primary);
+    box-shadow: 0 3px 8px var(--theme-primary-glow);
+}
+
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 1px solid var(--border-soft);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+}
+
+.data-table th {
+    background: #F8F3E8;
+    color: var(--theme-primary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.9rem 1.1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.data-table td {
+    padding: 0.9rem 1.1rem;
+    border-bottom: 1px solid var(--border-soft);
+    font-size: 0.95rem;
+    background: #FFF;
+}
+
+.data-table tr:last-child td {
+    border-bottom: none;
+}
+
+.lopa-cut {
+    text-decoration: line-through;
+    color: #C53030;
+    font-weight: bold;
+    padding: 0 2px;
+}
+
+.rule-badge {
+    background: #F4EBE1;
+    color: #5C1422;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.siddha-result-box {
+    margin-top: 1.2rem;
+    background: #FDFBF7;
+    border: 1.5px solid var(--theme-accent);
+    padding: 1rem 1.4rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.result-label {
+    font-weight: 700;
+    color: var(--theme-primary);
+}
+
+.result-word {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #2F855A;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+/* ==========================================================================
+   පාලි අක්ෂර මාලාව (අක්ෂර 41) ප්‍රදර්ශන කාඩ්පත් මෝස්තර
+   ========================================================================== */
+
+.akkhara-display-card {
+    background: #FAF8F5;
+    border: 1.5px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 1.2rem;
+    margin-top: 1rem;
+}
+
+.akkhara-group-title {
+    color: var(--theme-primary);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+    border-bottom: 1.5px dashed var(--theme-accent);
+    padding-bottom: 0.4rem;
+}
+
+.akkhara-sub-title {
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: var(--theme-primary);
+    margin: 0.9rem 0 0.4rem 0;
+}
+
+/* අකුරු කොටු පෙළගස්වන Grid එක */
+.akkhara-badges-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 0.8rem;
+}
+
+/* තනි අකුරක් පෙන්වන කොටුව (Badge) */
+.akkhara-badge {
+    background: #FFFFFF;
+    border: 1.5px solid #D9CEBD;
+    color: var(--theme-primary);
+    font-family: var(--font-sinhala);
+    font-size: 1.35rem; /* පැහැදිලි විශාල අකුරු */
+    font-weight: 700;
+    padding: 0.35rem 0.85rem;
+    border-radius: 8px;
+    min-width: 50px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.akkhara-badge:hover {
+    transform: translateY(-2px);
+    border-color: var(--theme-accent);
+    box-shadow: 0 4px 8px rgba(197, 155, 39, 0.2);
+}
+
+/* ස්වර අට සඳහා විශේෂ රන්වන් පසුබිම */
+.akkhara-badge.sara {
+    background: #FDF7E7;
+    color: #8C5302;
+    border-color: #C59B27;
+}
+
+/* නිග්ගහීතය සඳහා විශේෂ පසුබිම */
+.akkhara-badge.niggahita {
+    background: #F5EBE6;
+    color: #5C1422;
+    border-color: #8C2D00;
+}

@@ -1,0 +1,430 @@
+/* ==========================================================================
+   ෂඩාකාර හැඳින්වීම - සම්පූර්ණ මෝස්තර පත්‍රිකාව (css/shadakara.css)
+   ========================================================================== */
+
+/* 1. සියලු පෙළ දෙපස සමපාත කිරීම (Text Justify) */
+.text-justified,
+.hero-body-text,
+.appeal-content p,
+.shad-meaning-text,
+.type-desc,
+.timeline-step-table td,
+.sub-desc,
+.parsing-note,
+.colophon-text,
+.colophon-blessing {
+    text-align: justify;
+    text-justify: inter-word;
+    line-height: 1.85;
+}
+
+/* 2. පාලි පාඨ කැපී පෙනෙන Typography */
+.pali-highlight {
+    font-family: var(--font-sinhala);
+    font-weight: 700;
+    color: #8C2D00;
+    letter-spacing: 0.3px;
+}
+
+.pali-script-inline {
+    background: #FDF4E7;
+    border: 1px solid #F0D5BA;
+    color: #7A2800;
+    padding: 0.2rem 0.55rem;
+    border-radius: 4px;
+    font-weight: 700;
+    display: inline-block;
+    margin: 0 2px;
+}
+
+/* 3. ගාථා සඳහා වූ විශේෂ අලංකාර රාමුව (Classical Verse Box) */
+.verse-quote-box {
+    background: linear-gradient(180deg, #FDF9EE 0%, #F7EED8 100%);
+    border: 1.5px solid #D4AF37;
+    border-radius: 10px;
+    padding: 1.2rem 1.6rem;
+    margin: 1.2rem 0 1.5rem 0;
+    text-align: center;
+    box-shadow: 0 3px 12px rgba(212, 175, 55, 0.12);
+}
+
+.verse-quote-box.sub-verse-box {
+    margin: 1rem 0;
+    background: #FFFBF2;
+}
+
+.verse-label {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #8C5302;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+.verse-quote-box pre {
+    font-family: var(--font-sinhala);
+    font-size: 1.22rem !important; /* විශාල හා පැහැදිලි අකුරු */
+    font-weight: 700 !important;
+    color: #5C1422 !important;     /* ගැඹුරු මෙරූන් පැහැය */
+    line-height: 2 !important;
+    white-space: pre-line !important;
+    letter-spacing: 0.4px;
+    margin: 0;
+}
+
+/* 4. Hero Banner සහ Appeal Box */
+.intro-hero-banner {
+    border-left: 6px solid var(--theme-accent);
+    background: linear-gradient(135deg, #FFFFFF 0%, #FAF6EE 100%);
+    box-shadow: 0 4px 15px rgba(107, 29, 47, 0.05);
+    padding: 1.6rem;
+    border-radius: 12px;
+}
+
+.appeal-box {
+    margin-top: 1.3rem;
+    background: #FFFBF0;
+    border: 1px solid #EBD7A7;
+    border-left: 5px solid var(--theme-accent);
+    padding: 1.2rem 1.4rem;
+    border-radius: 8px;
+    color: #4A3805;
+}
+
+.appeal-title {
+    font-size: 1.1rem;
+    color: var(--theme-primary);
+    margin-bottom: 0.6rem;
+}
+
+.appeal-content p {
+    margin-bottom: 0.8rem;
+}
+
+.appeal-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* 5. ෂඩාකාර කාඩ්පත් 6 */
+.shadakara-interactive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.3rem;
+    margin-top: 1.2rem;
+}
+
+.shad-step-card {
+    background: #FFFFFF;
+    border: 1px solid var(--border-soft);
+    border-top: 4px solid var(--theme-primary);
+    border-radius: 10px;
+    padding: 1.3rem;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.shad-step-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+}
+
+.shad-circle-num {
+    background: var(--theme-primary);
+    color: #FFF;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.92rem;
+}
+
+.shad-step-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--theme-primary);
+}
+
+.shad-lakkhana-quote {
+    background: #FDF7EE;
+    border-left: 3.5px solid var(--theme-accent);
+    padding: 0.65rem 0.9rem;
+    border-radius: 4px;
+    font-size: 0.98rem;
+    font-weight: 600;
+    color: #702604;
+    line-height: 1.7;
+}
+
+/* 6. සූත්‍ර ව්‍යුහ කොටස් 4 */
+.sutta-sample-block {
+    background: #FAF8F5;
+    padding: 1.1rem 1.3rem;
+    border-radius: 8px;
+    border: 1px solid var(--border-soft);
+    margin-bottom: 1.2rem;
+    line-height: 1.9;
+}
+
+.four-parts-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1rem;
+}
+
+.part-mini-card {
+    background: #FFF;
+    border: 1px solid var(--border-soft);
+    border-left: 4px solid var(--theme-primary);
+    padding: 0.9rem 1.1rem;
+    border-radius: 6px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+}
+
+.part-tag {
+    font-size: 0.82rem;
+    font-weight: bold;
+    color: var(--theme-primary);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.3rem;
+}
+
+.part-content {
+    font-weight: 600;
+    font-size: 0.96rem;
+    line-height: 1.7;
+}
+
+/* 7. Timeline පියවර වගුව */
+.timeline-step-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 0.8rem;
+}
+
+.timeline-step-table tr {
+    background: #FAF8F5;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.02);
+}
+
+.timeline-step-table td {
+    padding: 1.1rem 1.3rem;
+    vertical-align: top;
+    border-top: 1px solid var(--border-soft);
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.timeline-step-table td:first-child {
+    border-left: 1px solid var(--border-soft);
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    width: 28%;
+    font-weight: 700;
+    color: var(--theme-primary);
+    border-right: 2px solid var(--border-soft);
+}
+
+.timeline-step-table td:last-child {
+    border-right: 1px solid var(--border-soft);
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.segmented-part {
+    padding: 0.35rem 0;
+    border-bottom: 1px dashed #E5D6C0;
+}
+
+.paramparika-note-box {
+    margin-top: 1.2rem;
+    background: #FCFBF7;
+    border: 1px solid var(--border-soft);
+    border-left: 4px solid var(--theme-accent);
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.94rem;
+    color: #4A3B18;
+    line-height: 1.8;
+}
+
+/* 8. සූත්‍ර වර්ග 6 */
+.sutta-types-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.3rem;
+    margin-top: 1.2rem;
+}
+
+.type-block {
+    background: #FFF;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.type-block-header {
+    background: #F8F5EE;
+    padding: 0.9rem 1.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--border-soft);
+}
+
+.type-block-header h4 {
+    color: var(--theme-primary);
+    font-size: 1.12rem;
+    font-weight: 700;
+}
+
+.type-badge-kind {
+    background: var(--theme-primary);
+    color: #FFF;
+    padding: 0.2rem 0.6rem;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: bold;
+}
+
+.type-block-body {
+    padding: 1.3rem;
+}
+
+.type-example-box {
+    background: #FDFBF8;
+    border-left: 3.5px solid var(--theme-accent);
+    padding: 0.7rem 1rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    margin-top: 0.8rem;
+    line-height: 1.8;
+}
+
+.sub-classification-box {
+    margin-top: 0.9rem;
+    background: #FFF;
+    border: 1px dashed var(--theme-accent);
+    padding: 0.9rem 1.1rem;
+    border-radius: 6px;
+    font-size: 0.92rem;
+}
+
+.sub-grid-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.9rem;
+    margin-top: 1rem;
+}
+
+.sub-mini-card {
+    background: #FAF8F5;
+    border: 1px solid var(--border-soft);
+    padding: 1rem;
+    border-radius: 6px;
+}
+
+.sub-title {
+    font-weight: 700;
+    color: var(--theme-primary);
+    font-size: 0.98rem;
+    margin-bottom: 0.3rem;
+}
+
+/* 9. පද විග්‍රහ Stepper UI */
+.parsing-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.4rem;
+}
+
+.parsing-column {
+    background: #FAF8F5;
+    border: 1px solid var(--border-soft);
+    border-radius: 8px;
+    padding: 1.3rem;
+}
+
+.parsing-title {
+    color: var(--theme-primary);
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 0.9rem;
+    border-bottom: 1px dashed var(--theme-accent);
+    padding-bottom: 0.4rem;
+}
+
+.stepper-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin: 0.8rem 0;
+}
+
+.step-flow-item {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    background: #FFF;
+    border: 1px solid var(--border-soft);
+    padding: 0.65rem 0.95rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+}
+
+.step-flow-num {
+    background: var(--theme-accent);
+    color: #FFF;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    font-size: 0.82rem;
+    flex-shrink: 0;
+}
+
+.parsing-note {
+    margin-top: 0.8rem;
+    background: #FFF;
+    border-left: 3.5px solid var(--theme-accent);
+    padding: 0.8rem;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: var(--text-muted);
+}
+
+.parsing-example-box {
+    margin-top: 0.8rem;
+    background: var(--theme-light);
+    padding: 0.9rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-soft);
+}
+
+/* 10. Colophon */
+.colophon-card {
+    border-top: 4px solid var(--theme-accent);
+    background: #FAF8F5;
+    padding: 1.4rem;
+}
+
+.colophon-text {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+}
+
+.colophon-blessing {
+    margin-top: 0.8rem;
+    font-weight: 600;
+    color: var(--theme-primary);
+    font-size: 0.96rem;
+}

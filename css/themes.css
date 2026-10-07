@@ -1,0 +1,44 @@
+:root {
+    /* Base Palette */
+    --font-sinhala: 'Noto Serif Sinhala', 'Iskoola Pota', Georgia, serif;
+    --font-brand: 'Cinzel', 'Noto Serif Sinhala', Georgia, serif;
+
+    /* Theme - Traditional Royal Manuscript */
+    --theme-primary: #5C1422;       /* ගැඹුරු මෙරූන් (Royal Maroon) */
+    --theme-primary-dark: #3F0B15;
+    --theme-primary-glow: rgba(92, 20, 34, 0.15);
+    --theme-accent: #C59B27;        /* සෞම්‍ය රන්වන් (Manuscript Gold) */
+    --theme-accent-light: #F4E8C1;
+    --theme-light: #FAF4E6;         /* පුස්කොළ පත්‍ර පසුබිම් පැහැය (Parchment) */
+    --surface-card: #FFFFFF;
+    --surface-soft: #FDFBF7;
+    --border-soft: #EADBBE;
+    --border-strong: #D4AF37;
+    --text-dark: #2B2118;
+    --text-muted: #6E6153;
+    
+    /* Layout Variables */
+    --header-height: 72px;
+    --sidebar-width: 320px;
+    --radius-sm: 8px;
+    --radius-md: 14px;
+    --radius-lg: 20px;
+    --shadow-soft: 0 4px 20px rgba(43, 33, 24, 0.05);
+    --shadow-elevated: 0 10px 30px rgba(92, 20, 34, 0.08);
+}
+
+/* ඛාණ්ඩයන්ට අදාළ Dynamic Theme Modifiers */
+body[data-theme="khanda-1_sandhi"] {
+    --theme-primary: #5C1422;
+    --theme-accent: #C59B27;
+}
+
+body[data-theme="khanda-2_nama"] {
+    --theme-primary: #14355C;
+    --theme-accent: #2E86AB;
+}
+
+body[data-theme="khanda-6_akhyata"] {
+    --theme-primary: #1B4D3E;
+    --theme-accent: #52B788;
+}
