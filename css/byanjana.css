@@ -7,6 +7,9 @@
     background: linear-gradient(135deg, #FFFFFF 0%, #FDF8ED 100%);
     border-top: 5px solid #6B1D2F;
     box-shadow: 0 4px 15px rgba(107, 29, 47, 0.06);
+    padding: 1.4rem 1.6rem;
+    border-radius: 10px;
+    margin-bottom: 1.2rem;
 }
 
 .byanjana-category-badge {
@@ -19,31 +22,153 @@
 }
 
 .byanjana-sutta-title {
-    font-size: 1.45rem;
+    font-size: 1.55rem;
     font-weight: 700;
-    color: var(--theme-primary);
-    margin: 0.6rem 0;
+    color: var(--theme-primary, #6B1D2F);
+    margin: 0.6rem 0 0.8rem 0;
 }
 
+/* සූත්‍ර අර්ථය පෙන්වන පෙට්ටිය */
+.byanjana-meaning-container {
+    background: #FFF9F2;
+    border: 1px solid #F3DFCA;
+    border-left: 4px solid #C59B27;
+    border-radius: 6px;
+    padding: 0.85rem 1.1rem;
+    margin-top: 0.6rem;
+}
+
+.byanjana-meaning-text {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: #4A2E18;
+    text-align: justify;
+    text-justify: inter-word;
+    margin: 0;
+}
+
+.byanjana-meaning-text strong,
+.byanjana-sanna-text strong {
+    color: #6B1D2F;
+    font-weight: 700;
+}
+
+/* වෘත්තිය සහ සන්නය පෙන්වන පෙට්ටිය */
 .byanjana-vutti-container {
     background: #FFFDF9;
     border: 1px dashed #C59B27;
     border-left: 4px solid #6B1D2F;
     border-radius: 6px;
-    padding: 1rem 1.2rem;
-    margin-top: 0.8rem;
+    padding: 1.1rem 1.25rem;
+    margin-top: 0.9rem;
+}
+
+.vutti-label {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #6B1D2F;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .byanjana-vutti-text {
-    font-size: 1.05rem;
-    line-height: 1.85;
+    font-size: 1.08rem;
+    line-height: 1.9;
     color: #4D121D;
     font-weight: 600;
     text-align: justify;
     text-justify: inter-word;
+    margin: 0 0 0.8rem 0;
 }
 
-/* 2. සූත්‍රයෙන් සෑදෙන සියලු පද - Compact Wrapping Badge Layout */
+.byanjana-sanna-divider {
+    border: 0;
+    border-top: 1px dashed #E2CEB1;
+    margin: 0.8rem 0;
+}
+
+.byanjana-sanna-text {
+    font-size: 0.98rem;
+    line-height: 1.85;
+    color: #382B26;
+    text-align: justify;
+    text-justify: inter-word;
+    margin: 0;
+}
+
+/* 2. ෂඩාකාර කාඩ්පත් මෝස්තර (Justified Alignment) */
+.shadakara-dynamic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1rem;
+    margin-top: 0.8rem;
+}
+
+.shad-aspect-card {
+    background: #FFFFFF;
+    border: 1px solid #EADBCE;
+    border-radius: 8px;
+    padding: 1rem 1.15rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+}
+
+.shad-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.6rem;
+    border-bottom: 1px solid #F4EBE1;
+    padding-bottom: 0.4rem;
+}
+
+.shad-number-badge {
+    background: #6B1D2F;
+    color: #FFF;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: bold;
+}
+
+.shad-card-title {
+    margin: 0;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #6B1D2F;
+}
+
+.shad-lakkhana-box {
+    background: #FDF9F2;
+    border-left: 3px solid #C59B27;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.94rem;
+    line-height: 1.75;
+    color: #4D121D;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    border-radius: 0 4px 4px 0;
+    text-align: justify !important;
+    text-justify: inter-word;
+}
+
+.shad-card-desc {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: #4A3E39;
+    text-align: justify !important;
+    text-justify: inter-word;
+    margin: 0;
+}
+
+/* 3. සූත්‍රයෙන් සෑදෙන සියලු පද - Compact Wrapping Badge Layout */
 .byanjana-formed-card {
     background: #FCFBF7;
     border-left: 4px solid #C59B27;
@@ -80,7 +205,6 @@
     font-size: 0.85rem;
 }
 
-/* තිරස්ව ඉඩ ප්‍රයෝජනයට ගන්නා Badge Container එක */
 .byanjana-words-badges {
     display: flex;
     flex-wrap: wrap;
@@ -108,7 +232,7 @@
     transform: translateY(-1px);
 }
 
-/* 3. සෑදිය නොහැකි පද (Counter Examples) Card */
+/* 4. සෑදිය නොහැකි පද (Counter Examples) */
 .byanjana-counter-card {
     background: #FFFDFC;
     border-left: 4px solid #C53030;
@@ -127,10 +251,12 @@
     padding: 0.6rem 0.9rem;
     border-radius: 6px;
     font-size: 0.92rem;
-    line-height: 1.6;
+    line-height: 1.65;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
-/* 4. සන්න / ටීකා විශේෂ සටහන් Card */
+/* 5. සන්න / ටීකා විශේෂ සටහන් (Extended Commentary) */
 .byanjana-commentary-card {
     background: #FDFBF7;
     border-left: 4px solid #C59B27;
@@ -144,15 +270,22 @@
     font-size: 0.95rem;
     line-height: 1.85;
     color: #4A3E39;
-    text-align: justify;
+    text-align: justify !important;
+    text-justify: inter-word;
 }
 
-/* 5. සාධන වගුව හා අවසන් පදය */
+/* 6. සාධන වගුව හා අවසන් පදය */
 .byanjana-derivation-card {
     background: #FFF;
-    border: 1px solid var(--border-soft);
+    border: 1px solid var(--border-soft, #EADBCE);
     border-radius: 10px;
     padding: 1.4rem;
+}
+
+.lopa-cut {
+    color: #C53030;
+    text-decoration: line-through;
+    font-weight: 700;
 }
 
 .byanjana-siddha-box {
@@ -168,7 +301,7 @@
 
 .byanjana-result-label {
     font-weight: 700;
-    color: var(--theme-primary);
+    color: var(--theme-primary, #6B1D2F);
     font-size: 1rem;
 }
 
@@ -177,4 +310,36 @@
     font-weight: 700;
     color: #2F855A;
     letter-spacing: 0.5px;
+}
+
+/* Tabs Styling */
+.example-tabs-list {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 1.2rem;
+}
+
+.example-tab-btn {
+    background: #FFFDF9;
+    border: 1px solid #D9C8A9;
+    color: #4D121D;
+    padding: 0.45rem 1rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.example-tab-btn:hover {
+    background: #FDF4E7;
+    border-color: #6B1D2F;
+}
+
+.example-tab-btn.active {
+    background: #6B1D2F !important;
+    color: #FFFFFF !important;
+    border-color: #6B1D2F !important;
+    box-shadow: 0 2px 8px rgba(107, 29, 47, 0.25);
 }

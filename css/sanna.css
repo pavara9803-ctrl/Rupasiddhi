@@ -7,6 +7,9 @@
     background: linear-gradient(135deg, #FFFFFF 0%, #FBF6EE 100%);
     border-top: 5px solid #6B1D2F;
     box-shadow: 0 4px 15px rgba(107, 29, 47, 0.06);
+    padding: 1.4rem 1.6rem;
+    border-radius: 10px;
+    margin-bottom: 1.2rem;
 }
 
 .sanna-category-badge {
@@ -19,10 +22,10 @@
 }
 
 .sanna-sutta-title {
-    font-size: 1.45rem;
+    font-size: 1.55rem;
     font-weight: 700;
-    color: var(--theme-primary);
-    margin: 0.6rem 0;
+    color: var(--theme-primary, #6B1D2F);
+    margin: 0.6rem 0 0.8rem 0;
 }
 
 /* සූත්‍රයේ තේරුම දැක්වෙන Box එක */
@@ -33,37 +36,57 @@
     border-radius: 6px;
     padding: 0.85rem 1.1rem;
     margin-top: 0.6rem;
-    font-size: 1rem;
-    color: #4A121A;
-    line-height: 1.75;
 }
 
-.sanna-box-label {
-    font-size: 0.82rem;
+.sanna-meaning-text {
+    font-size: 1rem;
+    color: #4A121A;
+    line-height: 1.8;
+    text-align: justify;
+    text-justify: inter-word;
+    margin: 0;
+}
+
+.sanna-meaning-text strong,
+.sanna-sanna-text strong {
+    color: #6B1D2F;
     font-weight: 700;
-    color: var(--theme-primary);
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 0.25rem;
 }
 
 /* සූත්‍ර වෘත්තිය සහ පදයෙන් පද සන්නය Box */
 .sanna-vutti-box {
     background: #FFFDF9;
-    border: 1px dashed var(--theme-accent);
-    border-left: 4px solid var(--theme-primary);
+    border: 1px dashed var(--theme-accent, #C59B27);
+    border-left: 4px solid var(--theme-primary, #6B1D2F);
     border-radius: 6px;
-    padding: 1rem 1.2rem;
-    margin-top: 0.8rem;
+    padding: 1.1rem 1.25rem;
+    margin-top: 0.9rem;
+}
+
+.vutti-label {
+    display: inline-block;
+    font-weight: 700;
+    font-size: 0.88rem;
+    color: #6B1D2F;
+    margin-bottom: 0.4rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
 .sanna-vutti-text {
-    font-size: 1.05rem;
-    line-height: 1.85;
+    font-size: 1.08rem;
+    line-height: 1.9;
     color: #4D121D;
     font-weight: 600;
     text-align: justify;
     text-justify: inter-word;
+    margin: 0 0 0.8rem 0;
+}
+
+.sanna-sanna-divider {
+    border: 0;
+    border-top: 1px dashed #E2CEB1;
+    margin: 0.8rem 0;
 }
 
 /* වෘත්තියේ පදයෙන් පද සන්නය Box */
@@ -73,17 +96,101 @@
     border-radius: 6px;
     padding: 1rem 1.2rem;
     margin-top: 0.75rem;
-    font-size: 0.95rem;
-    line-height: 1.85;
+}
+
+.sanna-sanna-text {
+    font-size: 0.98rem;
+    line-height: 1.95;
     color: #382E2B;
     text-align: justify;
     text-justify: inter-word;
+    margin: 0;
 }
 
-/* 2. අක්ෂර මාලාව (41 Akkhara Chart) Card */
+.sanna-sanna-text strong {
+    font-weight: 700;
+    color: #6B1D2F;
+    background: #FFFDF9;
+    padding: 1px 4px;
+    border-radius: 4px;
+    border: 1px solid #EEDBCE;
+    margin-right: 2px;
+}
+
+/* 2. ෂඩාකාර කාඩ්පත් මෝස්තර (Justified Alignment) */
+.shadakara-dynamic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1rem;
+    margin-top: 0.8rem;
+}
+
+.shad-aspect-card {
+    background: #FFFFFF;
+    border: 1px solid #EADBCE;
+    border-radius: 8px;
+    padding: 1rem 1.15rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+    display: flex;
+    flex-direction: column;
+}
+
+.shad-card-header {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.6rem;
+    border-bottom: 1px solid #F4EBE1;
+    padding-bottom: 0.4rem;
+}
+
+.shad-number-badge {
+    background: #6B1D2F;
+    color: #FFF;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.78rem;
+    font-weight: bold;
+}
+
+.shad-card-title {
+    margin: 0;
+    font-size: 0.98rem;
+    font-weight: 700;
+    color: #6B1D2F;
+}
+
+.shad-lakkhana-box {
+    background: #FDF9F2;
+    border-left: 3px solid #C59B27;
+    padding: 0.6rem 0.8rem;
+    font-size: 0.94rem;
+    line-height: 1.75;
+    color: #4D121D;
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+    border-radius: 0 4px 4px 0;
+    text-align: justify !important;
+    text-justify: inter-word;
+}
+
+.shad-card-desc {
+    font-size: 0.92rem;
+    line-height: 1.8;
+    color: #4A3E39;
+    text-align: justify !important;
+    text-justify: inter-word;
+    margin: 0;
+}
+
+/* 3. අක්ෂර මාලාව (41 Akkhara Chart) Card */
 .sanna-akkhara-card {
     background: #FFFFFF;
-    border: 1.5px solid var(--border-soft);
+    border: 1.5px solid var(--border-soft, #EADBCE);
     border-radius: 10px;
     padding: 1.4rem;
 }
@@ -91,7 +198,7 @@
 .sanna-group-header {
     font-size: 1.12rem;
     font-weight: 700;
-    color: var(--theme-primary);
+    color: var(--theme-primary, #6B1D2F);
     margin: 1rem 0 0.5rem 0;
     display: flex;
     align-items: center;
@@ -112,7 +219,7 @@
 .sanna-letter-badge {
     background: #FAF8F5;
     border: 1.5px solid #D9CEBD;
-    color: var(--theme-primary);
+    color: var(--theme-primary, #6B1D2F);
     font-family: var(--font-sinhala);
     font-size: 1.35rem;
     font-weight: 700;
@@ -129,7 +236,7 @@
 
 .sanna-letter-badge:hover {
     transform: translateY(-2px);
-    border-color: var(--theme-accent);
+    border-color: var(--theme-accent, #C59B27);
     box-shadow: 0 4px 10px rgba(197, 155, 39, 0.25);
 }
 
@@ -145,10 +252,10 @@
     border-color: #8C2D00;
 }
 
-/* 3. ස්ථාන-කරණ-ප්‍රයත්න විවරණ වගුව */
+/* 4. ස්ථාන-කරණ-ප්‍රයත්න විවරණ වගුව */
 .sanna-phonetics-card {
     background: #FFFFFF;
-    border: 1px solid var(--border-soft);
+    border: 1px solid var(--border-soft, #EADBCE);
     border-radius: 10px;
     padding: 1.4rem;
 }
@@ -172,7 +279,7 @@
 .sanna-phonetics-card .data-table td:first-child {
     font-size: 1.05rem !important;
     font-weight: 700 !important;
-    color: var(--theme-primary) !important;
+    color: var(--theme-primary, #6B1D2F) !important;
     vertical-align: middle !important;
     white-space: nowrap !important;
 }
@@ -182,7 +289,7 @@
     vertical-align: middle !important;
 }
 
-/* 4. සංඥා නීති විවරණ Grid (Twenty One Rules) */
+/* 5. සංඥා නීති විවරණ Grid (Twenty One Rules) */
 .sanna-rules-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -209,33 +316,20 @@
     line-height: 1.6;
     color: #4A3E39;
     margin: 0;
+    text-align: justify;
+    text-justify: inter-word;
 }
 
-/* 5. ටීකා / සන්න විස්තර සටහන */
+/* 6. ටීකා / සන්න විස්තර සටහන */
 .sanna-commentary-box {
     margin-top: 1rem;
     background: #FDFBF7;
-    border-left: 4px solid var(--theme-accent);
+    border-left: 4px solid var(--theme-accent, #C59B27);
     padding: 1rem 1.2rem;
     border-radius: 6px;
     font-size: 0.96rem;
     line-height: 1.85;
-    text-align: justify;
+    text-align: justify !important;
     text-justify: inter-word;
-}
-/* වෘත්තියේ පදයෙන් පද සන්නයේ පාලි වචන සඳහා විශේෂිත මෝස්තරය */
-.sanna-sanna-text {
-    margin: 0;
-    line-height: 1.95;
     color: #382E2B;
-}
-
-.sanna-sanna-text strong.sanna-pali-term {
-    font-weight: 700;
-    color: #6B1D2F;                 /* තද මෙරූන් පැහැයෙන් ඉස්මතු වීම */
-    background: #FFFDF9;
-    padding: 1px 4px;
-    border-radius: 4px;
-    border: 1px solid #EEDBCE;
-    margin-right: 2px;
 }
