@@ -1,0 +1,78 @@
+/* ==========================================================================
+   නිග්ගහීත සන්ධි (Niggahita Sandhi) - විශේෂිත මෝස්තර පත්‍රිකාව (css/niggahita.css)
+   ========================================================================== */
+
+/* 1. නිග්ගහීත සන්ධි Banner කාඩ්පත */
+.niggahita-banner-card {
+    background: linear-gradient(135deg, #FFFFFF 0%, #FBF4F1 100%);
+    border-top: 5px solid #5C1422;
+    box-shadow: 0 4px 15px rgba(92, 20, 34, 0.06);
+}
+
+.niggahita-category-badge {
+    background: #5C1422;
+    color: #FFF;
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+/* 2. සූත්‍ර සහ වෘත්ති පුවරුව */
+.niggahita-sutta-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--theme-primary);
+    margin: 0.6rem 0;
+}
+
+.niggahita-vutti-container {
+    background: #FFFDF9;
+    border: 1px dashed #C59B27;
+    border-left: 4px solid #5C1422;
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    margin-top: 0.8rem;
+}
+
+.niggahita-vutti-text {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #4A0E17;
+    font-weight: 600;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* 3. සාධන වගුව (Derivation Table) */
+.niggahita-derivation-card {
+    background: #FFF;
+    border: 1px solid var(--border-soft);
+    border-radius: 10px;
+    padding: 1.4rem;
+}
+
+/* සාධනය වූ අවසන් පදය (Result Box) */
+.niggahita-siddha-box {
+    margin-top: 1.2rem;
+    background: linear-gradient(135deg, #FCFBF7 0%, #F5EFE3 100%);
+    border: 1.5px solid #C59B27;
+    padding: 1rem 1.4rem;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.niggahita-result-label {
+    font-weight: 700;
+    color: var(--theme-primary);
+    font-size: 1rem;
+}
+
+.niggahita-result-word {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #2F855A;
+    letter-spacing: 0.5px;
+}
