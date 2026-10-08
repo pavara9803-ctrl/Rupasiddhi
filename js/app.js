@@ -185,6 +185,12 @@ function selectSuttaItem(suttaNum, subId) {
     AppState.activeSubKhandaId = subId;
     AppState.activeExampleIndex = 0;
 
+    // Intro Panel එක සඟවා Sutta Panel එක පෙන්වීම (අත්‍යවශ්‍යයි)
+    const introPanel = document.getElementById('viewIntroPanel');
+    const suttaPanel = document.getElementById('viewSuttaPanel');
+    if (introPanel) introPanel.style.display = 'none';
+    if (suttaPanel) suttaPanel.style.display = 'flex';
+
     document.querySelectorAll('.sutta-sub-item').forEach(el => {
         el.classList.toggle('active', el.innerText.trim().startsWith(`${suttaNum}.`));
     });
@@ -195,11 +201,15 @@ function selectSuttaItem(suttaNum, subId) {
 
     AppState.currentSutta = sutta;
 
-    // අනුඛාණ්ඩය අනුව අදාළ View Renderer එක කැඳවීම
+    // අනුඛාණ්ඩය අනුව අදාළ Renderer එක කැඳවීම
     if (subId === '01_sanna' && typeof renderSannaWorkspace === 'function') {
         renderSannaWorkspace(sutta);
     } else if (subId === '02_sara' && typeof renderSaraWorkspace === 'function') {
         renderSaraWorkspace(sutta);
+    } else if (subId === '03_byanjana' && typeof renderByanjanaWorkspace === 'function') {
+        renderByanjanaWorkspace(sutta);
+    } else if (subId === '04_niggahita' && typeof renderNiggahitaWorkspace === 'function') {
+        renderNiggahitaWorkspace(sutta);
     } else {
         renderSuttaWorkspace(sutta);
     }
