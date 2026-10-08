@@ -557,6 +557,8 @@ p,
     color: #702604;
     font-weight: 600;
     line-height: 1.6;
+    text-align: justify;              /* පාලි පාඨය දෙපස සමපාත කිරීම (Justify) */
+    text-justify: inter-word;
 }
 
 .shad-card-desc {

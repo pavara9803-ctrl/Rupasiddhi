@@ -25,6 +25,29 @@
     margin: 0.6rem 0;
 }
 
+/* සූත්‍රයේ තේරුම දැක්වෙන Box එක */
+.sanna-meaning-box {
+    background: #FFFDF9;
+    border: 1px solid #E6D2B5;
+    border-left: 4px solid #C59B27;
+    border-radius: 6px;
+    padding: 0.85rem 1.1rem;
+    margin-top: 0.6rem;
+    font-size: 1rem;
+    color: #4A121A;
+    line-height: 1.75;
+}
+
+.sanna-box-label {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--theme-primary);
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.25rem;
+}
+
+/* සූත්‍ර වෘත්තිය සහ පදයෙන් පද සන්නය Box */
 .sanna-vutti-box {
     background: #FFFDF9;
     border: 1px dashed var(--theme-accent);
@@ -39,6 +62,20 @@
     line-height: 1.85;
     color: #4D121D;
     font-weight: 600;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* වෘත්තියේ පදයෙන් පද සන්නය Box */
+.sanna-vutti-sanna-box {
+    background: #FAF8F5;
+    border: 1px solid #E2D7C3;
+    border-radius: 6px;
+    padding: 1rem 1.2rem;
+    margin-top: 0.75rem;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: #382E2B;
     text-align: justify;
     text-justify: inter-word;
 }
@@ -116,7 +153,65 @@
     padding: 1.4rem;
 }
 
-/* 4. ටීකා / සන්න විස්තර සටහන */
+.sanna-phonetics-card .data-table td code.pali-script-inline,
+.sanna-phonetics-card .pali-script-inline {
+    font-family: var(--font-sinhala) !important;
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: #7A2800 !important;
+    background: #FFFDF9 !important;
+    border: 1.5px solid #E6D2B5 !important;
+    border-radius: 8px !important;
+    padding: 0.55rem 1rem !important;
+    line-height: 2 !important;
+    letter-spacing: 0.5px !important;
+    display: inline-block !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+}
+
+.sanna-phonetics-card .data-table td:first-child {
+    font-size: 1.05rem !important;
+    font-weight: 700 !important;
+    color: var(--theme-primary) !important;
+    vertical-align: middle !important;
+    white-space: nowrap !important;
+}
+
+.sanna-phonetics-card .data-table td {
+    padding: 1rem 1.2rem !important;
+    vertical-align: middle !important;
+}
+
+/* 4. සංඥා නීති විවරණ Grid (Twenty One Rules) */
+.sanna-rules-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 0.8rem;
+    margin-top: 0.8rem;
+}
+
+.sanna-rule-card {
+    background: #FAF8F5;
+    border: 1px solid #E2D7C3;
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+}
+
+.sanna-rule-card strong {
+    color: #6B1D2F;
+    display: block;
+    margin-bottom: 0.3rem;
+    font-size: 0.95rem;
+}
+
+.sanna-rule-card p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    color: #4A3E39;
+    margin: 0;
+}
+
+/* 5. ටීකා / සන්න විස්තර සටහන */
 .sanna-commentary-box {
     margin-top: 1rem;
     background: #FDFBF7;
@@ -128,38 +223,19 @@
     text-align: justify;
     text-justify: inter-word;
 }
-/* ==========================================================================
-   ධ්වනි විද්‍යාත්මක වගුවේ අක්ෂර විශාල කර පැහැදිලිව දැක්වීම
-   ========================================================================== */
-
-/* වගුවේ ඇති අදාළ අක්ෂර කේත කොටුව (Code box) */
-.sanna-phonetics-card .data-table td code.pali-script-inline,
-.sanna-phonetics-card .pali-script-inline {
-    font-family: var(--font-sinhala) !important;
-    font-size: 1.25rem !important;          /* අකුරු පැහැදිලිව විශාල කිරීම */
-    font-weight: 700 !important;
-    color: #7A2800 !important;              /* තද පැහැදිලි තඹ/මෙරූන් පැහැය */
-    background: #FFFDF9 !important;
-    border: 1.5px solid #E6D2B5 !important;
-    border-radius: 8px !important;
-    padding: 0.55rem 1rem !important;
-    line-height: 2 !important;              /* පේළි සහ කොමා අතර ඉඩකඩ */
-    letter-spacing: 0.5px !important;
-    display: inline-block !important;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04) !important;
+/* වෘත්තියේ පදයෙන් පද සන්නයේ පාලි වචන සඳහා විශේෂිත මෝස්තරය */
+.sanna-sanna-text {
+    margin: 0;
+    line-height: 1.95;
+    color: #382E2B;
 }
 
-/* වගුවේ වම්පස ඇති ස්ථාන නාම (කණ්ඨ, තාලු ආදී) පෙළගැස්ම */
-.sanna-phonetics-card .data-table td:first-child {
-    font-size: 1.05rem !important;
-    font-weight: 700 !important;
-    color: var(--theme-primary) !important;
-    vertical-align: middle !important;
-    white-space: nowrap !important;
-}
-
-/* වගුවේ සෛල (Cells) සඳහා සිරස් පරතරය */
-.sanna-phonetics-card .data-table td {
-    padding: 1rem 1.2rem !important;
-    vertical-align: middle !important;
+.sanna-sanna-text strong.sanna-pali-term {
+    font-weight: 700;
+    color: #6B1D2F;                 /* තද මෙරූන් පැහැයෙන් ඉස්මතු වීම */
+    background: #FFFDF9;
+    padding: 1px 4px;
+    border-radius: 4px;
+    border: 1px solid #EEDBCE;
+    margin-right: 2px;
 }
