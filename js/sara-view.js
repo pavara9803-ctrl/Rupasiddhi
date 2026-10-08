@@ -1,20 +1,62 @@
 /**
  * ==========================================================================
  * සර සන්ධි Rendering Controller එක (js/sara-view.js)
- * 02_sara.js හි formula, rule, ඊතල සහ ලෝප ලකුණු නිවැරදිව Render කරයි.
+ * 02_sara.js හි සියලු තොරතුරු (සෑදෙන පද, ප්‍රත්‍යුදාහරණ, සන්න සටහන්) 
+ * සංයුක්තව (Compact) සහ පියවරෙන් පියවර සාධන වගුව පෙන්වයි.
  * ==========================================================================
  */
 
-// ලෝපය (කැපී යාම) සහ ඊතල හැඩගැස්වීම
+// ලෝපය (කැපී යාම), ආදේශ සහ ඊතල හැඩගැස්වීම
 function formatSaraFormula(text) {
     if (!text) return '';
-    // ~අ~ ලෝපය රතු පාටින් කැපී පෙනෙන ලෙස දැක්වීම
     let formatted = text.replace(/~([^~]+)~/g, '<span class="lopa-cut">$1</span>');
-    // ඊතල (→) කැපී පෙනෙන පැහැයකින් දැක්වීම
     formatted = formatted.replace(/→/g, '<span style="color: #C59B27; font-weight: bold; margin: 0 4px;">➔</span>');
-    // ආදේශ කොටු [ඉ → එ] ඉස්මතු කිරීම
     formatted = formatted.replace(/\[(.*?)\]/g, '<span style="background: #FDF4E7; border: 1px solid #E6D0BA; padding: 1px 6px; border-radius: 4px; color: #8C2D00; font-weight: 700;">$1</span>');
     return formatted;
+}
+
+// සූත්‍රයෙන් සෑදෙන සියලු පද හා ප්‍රභේද - පිටුවේ ඉඩ ප්‍රයෝජනයට ගන්නා සංයුක්ත ශ්‍රිතය
+function renderSaraFormedWords(formedWords) {
+    if (!formedWords || formedWords.length === 0) return '';
+
+    // ප්‍රභේද (Categories) ඇත්දැයි බැලීම (කොලන් ":" ලකුණ සහිත පද)
+    const hasCategories = formedWords.some(item => item.includes(':'));
+
+    // 1. ප්‍රභේද නොමැතිව තනි පද පමණක් ඇති විට
+    if (!hasCategories) {
+        return `
+            <div class="panel-card sara-formed-card">
+                <h3 class="section-heading"><span class="heading-icon">✨</span> සූත්‍රයෙන් සෑදෙන සියලු පද</h3>
+                <div class="sara-words-badges">
+                    ${formedWords.map(word => `<span class="sara-word-badge">${word.trim()}</span>`).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // 2. ප්‍රභේද සහිතව ඇති විට (අකාර ලෝපය, ආකාර ලෝපය, නිත්‍ය විධි ආදී වශයෙන්)
+    return `
+        <div class="panel-card sara-formed-card">
+            <h3 class="section-heading"><span class="heading-icon">✨</span> සූත්‍රයෙන් සෑදෙන සියලු පද හා ප්‍රභේද</h3>
+            <div class="sara-formed-groups">
+                ${formedWords.map(item => {
+                    const parts = item.split(':');
+                    const categoryTitle = parts.length > 1 ? parts[0].trim() : '';
+                    const wordsString = parts.length > 1 ? parts[1].trim() : parts[0].trim();
+                    const wordsList = wordsString.split(',').map(w => w.trim()).filter(Boolean);
+
+                    return `
+                        <div class="sara-group-box">
+                            ${categoryTitle ? `<div class="sara-group-title"><span class="group-bullet">⚜️</span> ${categoryTitle}</div>` : ''}
+                            <div class="sara-words-badges">
+                                ${wordsList.map(word => `<span class="sara-word-badge">${word}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        </div>
+    `;
 }
 
 function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
@@ -31,12 +73,13 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
             <div class="tag-row">
                 <span class="sara-category-badge">සර සන්ධි</span>
                 <span class="badge badge-khanda">සන්ධිකණ්ඩ</span>
+                ${suttaData.sutta_type ? `<span class="badge" style="background:#FAF2E6; color:#8C2D00; border:1px solid #E6D0BA;">${suttaData.sutta_type}</span>` : ''}
             </div>
             <h2 class="sara-sutta-title">${suttaData.sutta_name || suttaData.sutta}</h2>
-            
+
             ${suttaData.vutti ? `
                 <div class="sara-vutti-container">
-                    <span class="vutti-label">වෘත්තිය:</span>
+                    <span class="vutti-label">සූත්‍ර වෘත්තිය (පාළි):</span>
                     <p class="sara-vutti-text">${suttaData.vutti}</p>
                 </div>
             ` : ''}
@@ -52,10 +95,35 @@ function renderSaraWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
             </div>
         ` : ''}
 
-        <!-- 03. පද සාධන පුවරුව -->
+        <!-- 03. සූත්‍රයෙන් සෑදෙන සියලු පද (Formed Words) -->
+        ${renderSaraFormedWords(suttaData.formed_words)}
+
+        <!-- 04. සෑදිය නොහැකි පද / ප්‍රත්‍යුදාහරණ (Counter Examples) -->
+        ${suttaData.counter_examples ? `
+            <div class="panel-card sara-counter-card">
+                <h3 class="section-heading"><span class="heading-icon">🚫</span> සෑදිය නොහැකි පද / නීතිය නොවළඳින තැන් (ප්‍රත්‍යුදාහරණ)</h3>
+                <div class="sara-counter-content">
+                    ${Array.isArray(suttaData.counter_examples) 
+                        ? suttaData.counter_examples.map(ce => `<div class="counter-line">✖ ${ce}</div>`).join('') 
+                        : `<div class="counter-line">✖ ${suttaData.counter_examples}</div>`}
+                </div>
+            </div>
+        ` : ''}
+
+        <!-- 05. සන්න, ටීකා හා න්‍යාස විශේෂ විමර්ශන (Extended Commentary) -->
+        ${suttaData.extended_commentary ? `
+            <div class="panel-card sara-commentary-card">
+                <h3 class="section-heading"><span class="heading-icon">📖</span> සන්න, ටීකා හා න්‍යාස විශේෂ විවරණ</h3>
+                <div class="sara-commentary-text">
+                    ${suttaData.extended_commentary}
+                </div>
+            </div>
+        ` : ''}
+
+        <!-- 06. පියවරෙන් පියවර පද සාධන පුවරුව -->
         ${examples.length > 0 ? `
             <div class="panel-card sara-derivation-card">
-                <h3 class="section-heading"><span class="heading-icon">⚙️</span> පද සාධන විධික්‍රමය</h3>
+                <h3 class="section-heading"><span class="heading-icon">⚙️</span> පියවරෙන් පියවර පද සාධන විධික්‍රමය</h3>
                 
                 <!-- උදාහරණ තේරීමේ Tabs -->
                 <div class="example-tabs-list">
