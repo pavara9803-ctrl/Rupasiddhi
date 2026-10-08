@@ -1,7 +1,8 @@
 /**
  * ==========================================================================
  * ව්‍යංජන සන්ධි Rendering Controller එක (js/byanjana-view.js)
- * 03_byanjana.js හි formula, rule, ඊතල සහ ලෝප ලකුණු Render කරයි.
+ * 03_byanjana.js හි සියලු තොරතුරු (සෑදෙන පද, ප්‍රත්‍යුදාහරණ, සන්න සටහන්) 
+ * සංයුක්තව (Compact) සහ පියවරෙන් පියවර සාධන වගුව පෙන්වයි.
  * ==========================================================================
  */
 
@@ -12,6 +13,49 @@ function formatByanjanaFormula(text) {
     formatted = formatted.replace(/→/g, '<span style="color: #C59B27; font-weight: bold; margin: 0 4px;">➔</span>');
     formatted = formatted.replace(/\[(.*?)\]/g, '<span style="background: #FDF4E7; border: 1px solid #E6D0BA; padding: 1px 6px; border-radius: 4px; color: #6B1D2F; font-weight: 700;">$1</span>');
     return formatted;
+}
+
+// සූත්‍රයෙන් සෑදෙන සියලු පද හා ප්‍රභේද - පිටුවේ ඉඩ ප්‍රයෝජනයට ගන්නා සංයුක්ත ශ්‍රිතය
+function renderByanjanaFormedWords(formedWords) {
+    if (!formedWords || formedWords.length === 0) return '';
+
+    const hasCategories = formedWords.some(item => item.includes(':'));
+
+    // 1. ප්‍රභේද නොමැතිව තනි පද පමණක් ඇති විට
+    if (!hasCategories) {
+        return `
+            <div class="panel-card byanjana-formed-card">
+                <h3 class="section-heading"><span class="heading-icon">✨</span> සූත්‍රයෙන් සෑදෙන සියලු පද</h3>
+                <div class="byanjana-words-badges">
+                    ${formedWords.map(word => `<span class="byanjana-word-badge">${word.trim()}</span>`).join('')}
+                </div>
+            </div>
+        `;
+    }
+
+    // 2. ප්‍රභේද සහිතව ඇති විට (සුඛුච්චාරණ දීර්ඝ, ඡන්දානුරක්ඛණ දීර්ඝ ආදී වශයෙන්)
+    return `
+        <div class="panel-card byanjana-formed-card">
+            <h3 class="section-heading"><span class="heading-icon">✨</span> සූත්‍රයෙන් සෑදෙන සියලු පද හා ප්‍රභේද</h3>
+            <div class="byanjana-formed-groups">
+                ${formedWords.map(item => {
+                    const parts = item.split(':');
+                    const categoryTitle = parts.length > 1 ? parts[0].trim() : '';
+                    const wordsString = parts.length > 1 ? parts[1].trim() : parts[0].trim();
+                    const wordsList = wordsString.split(',').map(w => w.trim()).filter(Boolean);
+
+                    return `
+                        <div class="byanjana-group-box">
+                            ${categoryTitle ? `<div class="byanjana-group-title"><span class="group-bullet">⚜️</span> ${categoryTitle}</div>` : ''}
+                            <div class="byanjana-words-badges">
+                                ${wordsList.map(word => `<span class="byanjana-word-badge">${word}</span>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                }).join('')}
+            </div>
+        </div>
+    `;
 }
 
 function renderByanjanaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
@@ -28,12 +72,13 @@ function renderByanjanaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel'
             <div class="tag-row">
                 <span class="byanjana-category-badge">ව්‍යංජන සන්ධි</span>
                 <span class="badge badge-khanda">සන්ධිකණ්ඩ</span>
+                ${suttaData.sutta_type ? `<span class="badge" style="background:#FAF2E6; color:#6B1D2F; border:1px solid #E6D0BA;">${suttaData.sutta_type}</span>` : ''}
             </div>
             <h2 class="byanjana-sutta-title">${suttaData.sutta_name || suttaData.sutta}</h2>
-            
+
             ${suttaData.vutti ? `
                 <div class="byanjana-vutti-container">
-                    <span class="vutti-label">වෘත්තිය:</span>
+                    <span class="vutti-label">සූත්‍ර වෘත්තිය (පාළි):</span>
                     <p class="byanjana-vutti-text">${suttaData.vutti}</p>
                 </div>
             ` : ''}
@@ -49,10 +94,35 @@ function renderByanjanaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel'
             </div>
         ` : ''}
 
-        <!-- 03. පද සාධන පුවරුව -->
+        <!-- 03. සූත්‍රයෙන් සෑදෙන සියලු පද (Formed Words) -->
+        ${renderByanjanaFormedWords(suttaData.formed_words)}
+
+        <!-- 04. සෑදිය නොහැකි පද / ප්‍රත්‍යුදාහරණ (Counter Examples) -->
+        ${suttaData.counter_examples ? `
+            <div class="panel-card byanjana-counter-card">
+                <h3 class="section-heading"><span class="heading-icon">🚫</span> සෑදිය නොහැකි පද / නීතිය නොවළඳින තැන් (ප්‍රත්‍යුදාහරණ)</h3>
+                <div class="byanjana-counter-content">
+                    ${Array.isArray(suttaData.counter_examples) 
+                        ? suttaData.counter_examples.map(ce => `<div class="counter-line">✖ ${ce}</div>`).join('') 
+                        : `<div class="counter-line">✖ ${suttaData.counter_examples}</div>`}
+                </div>
+            </div>
+        ` : ''}
+
+        <!-- 05. සන්න, ටීකා හා න්‍යාස විශේෂ විමර්ශන (Extended Commentary) -->
+        ${suttaData.extended_commentary ? `
+            <div class="panel-card byanjana-commentary-card">
+                <h3 class="section-heading"><span class="heading-icon">📖</span> සන්න, ටීකා හා න්‍යාස විශේෂ විවරණ</h3>
+                <div class="byanjana-commentary-text">
+                    ${suttaData.extended_commentary}
+                </div>
+            </div>
+        ` : ''}
+
+        <!-- 06. පියවරෙන් පියවර පද සාධන පුවරුව -->
         ${examples.length > 0 ? `
             <div class="panel-card byanjana-derivation-card">
-                <h3 class="section-heading"><span class="heading-icon">⚙️</span> පද සාධන විධික්‍රමය</h3>
+                <h3 class="section-heading"><span class="heading-icon">⚙️</span> පියවරෙන් පියවර පද සාධන විධික්‍රමය</h3>
                 
                 <!-- උදාහරණ තේරීමේ Tabs -->
                 <div class="example-tabs-list">
