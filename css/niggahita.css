@@ -1,5 +1,5 @@
 /* ==========================================================================
-   නිග්ගහීත සන්ධි (Niggahita Sandhi) - විශේෂිත මෝස්තර පත්‍රිකාව (css/niggahita.css)
+   නිග්ගහීත සන්ධි (Niggahita Sandhi) - ප්‍රධාන මෝස්තර පත්‍රිකාව (css/niggahita.css)
    ========================================================================== */
 
 /* 1. නිග්ගහීත සන්ධි Banner කාඩ්පත */
@@ -18,9 +18,8 @@
     font-weight: 700;
 }
 
-/* 2. සූත්‍ර සහ වෘත්ති පුවරුව */
 .niggahita-sutta-title {
-    font-size: 1.4rem;
+    font-size: 1.45rem;
     font-weight: 700;
     color: var(--theme-primary);
     margin: 0.6rem 0;
@@ -44,7 +43,111 @@
     text-justify: inter-word;
 }
 
-/* 3. සාධන වගුව (Derivation Table) */
+/* 2. සූත්‍රයෙන් සෑදෙන සියලු පද - Compact Wrapping Badge Layout */
+.niggahita-formed-card {
+    background: #FCFBF7;
+    border-left: 4px solid #C59B27;
+    padding: 1.2rem 1.4rem;
+}
+
+.niggahita-formed-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.niggahita-group-box {
+    background: #FFFFFF;
+    border: 1px solid #EADBCE;
+    border-radius: 6px;
+    padding: 0.65rem 0.9rem;
+}
+
+.niggahita-group-title {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #5C1422;
+    margin-bottom: 0.45rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px dashed #EEDDC9;
+    padding-bottom: 0.25rem;
+}
+
+.group-bullet {
+    color: #C59B27;
+    font-size: 0.85rem;
+}
+
+/* තිරස්ව ඉඩ ප්‍රයෝජනයට ගන්නා Badge Container එක */
+.niggahita-words-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.niggahita-word-badge {
+    background: #FFFDF9;
+    border: 1px solid #D9C8A9;
+    color: #4A121A;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.22rem 0.65rem;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.15s ease;
+}
+
+.niggahita-word-badge:hover {
+    background: #5C1422;
+    color: #FFF9E6;
+    border-color: #5C1422;
+    transform: translateY(-1px);
+}
+
+/* 3. සෑදිය නොහැකි පද (Counter Examples) Card */
+.niggahita-counter-card {
+    background: #FFFDFC;
+    border-left: 4px solid #C53030;
+}
+
+.niggahita-counter-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.counter-line {
+    background: #FFF5F5;
+    border: 1px solid #FED7D7;
+    color: #9B2C2C;
+    padding: 0.6rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* 4. සන්න / ටීකා විශේෂ සටහන් Card */
+.niggahita-commentary-card {
+    background: #FDFBF7;
+    border-left: 4px solid #C59B27;
+}
+
+.niggahita-commentary-text {
+    background: #FFF;
+    border: 1px dashed #D9CEBD;
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: #4A3E39;
+    text-align: justify;
+}
+
+/* 5. සාධන වගුව හා අවසන් පදය */
 .niggahita-derivation-card {
     background: #FFF;
     border: 1px solid var(--border-soft);
@@ -52,7 +155,20 @@
     padding: 1.4rem;
 }
 
-/* සාධනය වූ අවසන් පදය (Result Box) */
+.niggahita-step-badge {
+    background: #FAF2E6;
+    color: #5C1422;
+    border: 1px solid #E6D0BA;
+    width: 26px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    font-weight: bold;
+    font-size: 0.85rem;
+}
+
 .niggahita-siddha-box {
     margin-top: 1.2rem;
     background: linear-gradient(135deg, #FCFBF7 0%, #F5EFE3 100%);
