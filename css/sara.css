@@ -1,5 +1,5 @@
 /* ==========================================================================
-   සර සන්ධි (Sara Sandhi) - විශේෂිත මෝස්තර පත්‍රිකාව (css/sara.css)
+   සර සන්ධි (Sara Sandhi) - ප්‍රධාන මෝස්තර පත්‍රිකාව (css/sara.css)
    ========================================================================== */
 
 /* 1. සර සන්ධි Banner කාඩ්පත */
@@ -18,9 +18,8 @@
     font-weight: 700;
 }
 
-/* 2. සූත්‍ර සහ වෘත්ති පුවරුව */
 .sara-sutta-title {
-    font-size: 1.4rem;
+    font-size: 1.45rem;
     font-weight: 700;
     color: var(--theme-primary);
     margin: 0.6rem 0;
@@ -44,7 +43,111 @@
     text-justify: inter-word;
 }
 
-/* 3. සර සන්ධි සාධන වගුව (Derivation Table) */
+/* 2. සූත්‍රයෙන් සෑදෙන සියලු පද - Compact Wrapping Badge Layout */
+.sara-formed-card {
+    background: #FCFBF7;
+    border-left: 4px solid #C59B27;
+    padding: 1.2rem 1.4rem;
+}
+
+.sara-formed-groups {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.sara-group-box {
+    background: #FFFFFF;
+    border: 1px solid #EADBCE;
+    border-radius: 6px;
+    padding: 0.65rem 0.9rem;
+}
+
+.sara-group-title {
+    font-weight: 700;
+    font-size: 0.92rem;
+    color: #6B1D2F;
+    margin-bottom: 0.45rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    border-bottom: 1px dashed #EEDDC9;
+    padding-bottom: 0.25rem;
+}
+
+.group-bullet {
+    color: #C59B27;
+    font-size: 0.85rem;
+}
+
+/* තිරස්ව ඉඩ සම්පූර්ණයෙන්ම භාවිත කරන Badge Container එක */
+.sara-words-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+}
+
+.sara-word-badge {
+    background: #FFFDF9;
+    border: 1px solid #D9C8A9;
+    color: #4A121A;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.22rem 0.65rem;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.15s ease;
+}
+
+.sara-word-badge:hover {
+    background: #6B1D2F;
+    color: #FFF9E6;
+    border-color: #6B1D2F;
+    transform: translateY(-1px);
+}
+
+/* 3. සෑදිය නොහැකි පද (Counter Examples) Card */
+.sara-counter-card {
+    background: #FFFDFC;
+    border-left: 4px solid #C53030;
+}
+
+.sara-counter-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.counter-line {
+    background: #FFF5F5;
+    border: 1px solid #FED7D7;
+    color: #9B2C2C;
+    padding: 0.6rem 0.9rem;
+    border-radius: 6px;
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+/* 4. සන්න / ටීකා විශේෂ සටහන් Card */
+.sara-commentary-card {
+    background: #FDFBF7;
+    border-left: 4px solid #C59B27;
+}
+
+.sara-commentary-text {
+    background: #FFF;
+    border: 1px dashed #D9CEBD;
+    padding: 1rem 1.2rem;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    line-height: 1.85;
+    color: #4A3E39;
+    text-align: justify;
+}
+
+/* 5. සාධන වගුව හා අවසන් පදය */
 .sara-derivation-card {
     background: #FFF;
     border: 1px solid var(--border-soft);
@@ -66,7 +169,6 @@
     font-size: 0.85rem;
 }
 
-/* ලෝප, ආදේශ සහ දීර්ඝ ලකුණු */
 .sara-lopa-highlight {
     color: #C53030;
     text-decoration: line-through;
@@ -78,7 +180,6 @@
     font-weight: 700;
 }
 
-/* සාධනය වූ අවසන් පදය (Result Box) */
 .sara-siddha-box {
     margin-top: 1.2rem;
     background: linear-gradient(135deg, #FCFBF7 0%, #F5EFE3 100%);
