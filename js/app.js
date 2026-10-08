@@ -4,39 +4,6 @@
  * ==========================================================================
  */
 
-// ෂඩාකාර හැඳින්වීම Master Data (ප්‍රාරම්භක තිරය සඳහා පමණි)
-const SHADAKARA_MASTER_DATA = {
-    header_section: {
-        title: "ඉපැරණි ෂඩාකාර ක්‍රමය හා එය භාවිතයේදී දතයුතු කරුණු",
-        lead_paragraph: "ඉතා ප්‍රශස්ත වූ පුරාණ ෂඩාකාර ක්‍රමයට බාලාවතාරය හැදෑරීමට උපකාර වන පරිදි සැකසූ ග්‍රන්ථයක් වන මෙම තත්වදීපිකාව භාවිතයේදී එම ෂඩාකාර ක්‍රමය ගැන මූලික අවබෝධයක් ලබා තිබිය යුතුය. දැනට එම ඉතා වටිනා ඉගැන්වීමේ ක්‍රමය අභාවයට යමින් පවතින බැවින් එය රැකගැනීමට යම් හෝ රුකුලක් අපට හැකි අයුරින් ලබාදීමේ අරමුණින් මෙම කරුණු මෙසේ ඇතුලත් කරමු.",
-        appeal: "දහම් දැනීම හා පාළි භාෂා දැනීම ඇති ප්‍රතිපත්තිගරුක භික්ෂුවක් බවට පත්වීමට අදිටන් කරගන්නා සේක්වා යනු අපගේ ගෞරවනීය ආරාධනයයි."
-    },
-    shadakara_definition: {
-        title: "ෂඩාකාරය යනු කුමක්ද?",
-        description: "එක් වියරණ සූත්‍රයක් විස්තර කිරීමේදී භාවිතා කළ ආකාර හය ෂඩාකාරය නම් වේ. මුඛමත්තදීපනී, රූපසිද්ධිටීකා, කච්චායනවණ්ණනා ආදී පුරාණ වියරණ ග්‍රන්ථයන්හි මෙසේ දක්වා ඇත.",
-        verse: "සම‍්බන්‍ධො ච පදඤ‍්චෙව පදත්‍ථො පදවිග‍්ගහො\nචොදනා පරිහාරො ච ඡබ‍්බිධා සුත‍්තවණ‍්ණනා",
-        six_modes: [
-            { id: 1, name: "සම‍්බන්‍ධො", pali: "සුත්තෙ පුබ්බාපරපදානං එකවාක්‍යතාය යොජනා සම්බන්ධො", meaning: "සූත්‍රයෙහි පූර්ව අපර පද එක් වාක්‍යක් ලෙස ගලපා යෙදීම සම්බන්ධය නමි." },
-            { id: 2, name: "පදං", pali: "සුත්තෙ පදච්ඡෙදවසෙන පදං වෙදිතබ්බං", meaning: "සූත්‍රයෙහි පද බෙදා දැක්වීම පද කීම නමි." },
-            { id: 3, name: "පදත්‍ථො", pali: "සුත්තත්ථවසෙන පදත්‍ථො වෙදිතබ්බං", meaning: "සූත්‍රයෙහි පදයන් ගලපා ඒවායේ අර්ථ කීම පදාර්ථ කීම නමි." },
-            { id: 4, name: "පදවිග‍්ගහො", pali: "සුත්තෙ විජ්ජමානසමාස - තද්ධිත - කිතකපදානං සමාසාදි-විග්ගහවාක්‍යදස්සනං විග්ගහො", meaning: "සූත්‍රයෙහි දක්නට ලැබෙන සමාස, තද්ධිත, කිතක පදයන්ගේ විග්‍රහ වාක්‍ය දැක්වීම පදවිග්‍රහය නමි." },
-            { id: 5, name: "චොදනා", pali: "සුත්තෙ පදානං පයෝජනාදිපුච්ඡනං චොදනා", meaning: "සූත්‍රයේ පදයන්ගේ ප්‍රයෝජනාදිය විමසීම චෝදනා නමි." },
-            { id: 6, name: "පරිහාරො", pali: "සුත්තෙ පදානං සාත්ථකතාදිදස්සනවසෙන පරිහරණං පරිහාරො", meaning: "සූත්‍රයේ පදයන්ගේ සාර්ථකත්වය දැක්වීම පරිහාර නමි." }
-        ]
-    },
-    sutta_structure: {
-        title: "සූත්‍රයක කොටස් (බාලාවතාර 4 වන සූත්‍රය ඇසුරින්)",
-        sutta_text: "4. අඤ‍්ඤෙ දීඝා.",
-        vutti_text: "තත්‍ථ සරෙසු රස‍්සෙහඤ‍්ඤෙ දීඝා. සංයොගතො පුබ‍්බෙ එඔ රස‍්සා ඉවොච‍්චන‍්තෙ ක්‍වචි, අනන‍්තරා බ්‍යඤ‍්ජනා සංයොගො. එත්‍ථ, සෙය්‍යො, ඔට්‍ඨො, සොත්‍ථි.",
-        four_parts: [
-            { part: "සූත්‍රය", content: "අඤ‍්ඤෙ දීඝා" },
-            { part: "වෘත්තිය", content: "තත්‍ථ සරෙසු රස‍්සෙහඤ‍්ඤෙ දීඝා. සංයොගතො පුබ‍්බෙ එඔ රස‍්සා ඉවොච‍්චන‍්තෙ, අනන‍්තරා බ්‍යඤ‍්ජනා සංයොගො." },
-            { part: "උදාහරණ", content: "එත්‍ථ, සෙය්‍යො, ඔට්‍ඨො, සොත්‍ථි." },
-            { part: "ප්‍රයෝග", content: "ක්‍වචීති කිං? පුත‍්තො ත්‍යාහං මහාරාජ" }
-        ]
-    }
-};
-
 // ඛාණ්ඩ 7 පිළිබඳ නාමාවලි සටහන
 const KHANDAS_CONFIG = [
     { 
@@ -58,14 +25,15 @@ const KHANDAS_CONFIG = [
     { key: "7_kibbhidhana", name: "7. කිබ්බිධානකණ්ඩ", subCategories: [{ id: "01_krt_general", name: "කිත් විධි" }] }
 ];
 
-// Global State
+// Global App State
 const AppState = {
     currentMode: 'intro',
     activeKhandaKey: null,
     activeSubKhandaId: null,
     activeSuttaNumber: null,
     activeExampleIndex: 0,
-    currentSuttas: []
+    currentSuttas: [],
+    currentSutta: null
 };
 
 function parseLopaCuts(text) {
@@ -91,7 +59,6 @@ function renderKhandaTreeNavigation() {
 
         const isCurrentActive = (item.key === AppState.activeKhandaKey && AppState.currentMode === 'khanda');
 
-        // ප්‍රධාන ඛාණ්ඩ Button
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = `khanda-tab ${isCurrentActive ? 'active' : ''}`;
@@ -103,7 +70,6 @@ function renderKhandaTreeNavigation() {
         
         btn.onclick = () => selectKhanda(item.key);
 
-        // අනුඛාණ්ඩ Container
         const subContainer = document.createElement('div');
         subContainer.id = `subContainer_${item.key}`;
         subContainer.className = `subkhanda-tree-container ${isCurrentActive ? 'expanded' : ''}`;
@@ -119,7 +85,7 @@ function renderKhandaTreeNavigation() {
 }
 
 /**
- * අනුඛාණ්ඩ සහ ඒ යටතේම සූත්‍ර ලැයිස්තු Populate කිරීම
+ * අනුඛාණ්ඩ සහ සූත්‍ර ලැයිස්තු Populate කිරීම
  */
 function populateSubKhandaUnderButton(khandaKey, subCategories) {
     const container = document.getElementById(`subContainer_${khandaKey}`);
@@ -132,7 +98,6 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
 
         const isCurrentSub = (AppState.activeSubKhandaId === sub.id && AppState.currentMode === 'khanda');
 
-        // අනුඛාණ්ඩ Button
         const btn = document.createElement('button');
         btn.type = 'button';
         btn.className = `subkhanda-tree-btn ${isCurrentSub ? 'active' : ''}`;
@@ -146,12 +111,10 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
             toggleSubKhandaSuttas(sub.id);
         };
 
-        // අනුඛාණ්ඩයට යටින්ම පිහිටන සූත්‍ර ලැයිස්තුව
         const suttaListUl = document.createElement('ul');
         suttaListUl.id = `suttaList_${sub.id}`;
         suttaListUl.className = `sutta-sub-list ${isCurrentSub ? 'expanded' : ''}`;
 
-        // External Database වෙතින් දත්ත ලබා ගැනීම
         const suttasForSub = (window.SuttaDatabase && window.SuttaDatabase[sub.id]) || [];
 
         if (suttasForSub.length === 0) {
@@ -159,11 +122,12 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
         } else {
             suttasForSub.forEach(sutta => {
                 const li = document.createElement('li');
-                li.className = `sutta-sub-item ${sutta.sutta_number === AppState.activeSuttaNumber ? 'active' : ''}`;
-                li.innerHTML = `<strong>${sutta.sutta_number}.</strong> ${sutta.sutta_name.split('. ')[1] || sutta.sutta_name}`;
+                const isSelected = (sutta.sutta_number === AppState.activeSuttaNumber);
+                li.className = `sutta-sub-item ${isSelected ? 'active' : ''}`;
+                li.innerHTML = `<strong>${sutta.sutta_number}.</strong> ${sutta.sutta_name ? (sutta.sutta_name.split('. ')[1] || sutta.sutta_name) : (sutta.sutta || '')}`;
                 li.onclick = (e) => {
                     e.stopPropagation();
-                    selectSuttaItem(sutta.sutta_number, sub.id);
+                    selectSuttaItem(sutta.sutta_number || sutta.id, sub.id);
                 };
                 suttaListUl.appendChild(li);
             });
@@ -176,7 +140,7 @@ function populateSubKhandaUnderButton(khandaKey, subCategories) {
 }
 
 /**
- * අනුඛාණ්ඩයක් ක්ලික් කළ විට සූත්‍ර ලැයිස්තුව දිගහැරීම / වැසීම
+ * අනුඛාණ්ඩයක් Toggle කිරීම
  */
 function toggleSubKhandaSuttas(subId) {
     const isAlreadyActive = (AppState.activeSubKhandaId === subId);
@@ -205,7 +169,8 @@ function toggleSubKhandaSuttas(subId) {
         AppState.currentSuttas = suttasForSub;
 
         if (suttasForSub.length > 0) {
-            selectSuttaItem(suttasForSub[0].sutta_number, subId);
+            const firstSuttaId = suttasForSub[0].sutta_number || suttasForSub[0].id;
+            selectSuttaItem(firstSuttaId, subId);
         }
     } else {
         AppState.activeSubKhandaId = null;
@@ -213,7 +178,7 @@ function toggleSubKhandaSuttas(subId) {
 }
 
 /**
- * සූත්‍රයක් තෝරා ගැනීම
+ * සූත්‍රයක් තෝරා ගැනීම සහ අදාළ Renderer එක කැඳවීම
  */
 function selectSuttaItem(suttaNum, subId) {
     AppState.activeSuttaNumber = suttaNum;
@@ -221,21 +186,29 @@ function selectSuttaItem(suttaNum, subId) {
     AppState.activeExampleIndex = 0;
 
     document.querySelectorAll('.sutta-sub-item').forEach(el => {
-        el.classList.toggle('active', el.innerText.startsWith(`${suttaNum}.`));
+        el.classList.toggle('active', el.innerText.trim().startsWith(`${suttaNum}.`));
     });
 
     const suttasForSub = (window.SuttaDatabase && window.SuttaDatabase[subId]) || [];
-    const sutta = suttasForSub.find(s => s.sutta_number === suttaNum);
+    const sutta = suttasForSub.find(s => (s.sutta_number === suttaNum || s.id === suttaNum));
     if (!sutta) return;
 
-    renderSuttaWorkspace(sutta);
+    AppState.currentSutta = sutta;
+
+    // අනුඛාණ්ඩය අනුව අදාළ View Renderer එක කැඳවීම
+    if (subId === '01_sanna' && typeof renderSannaWorkspace === 'function') {
+        renderSannaWorkspace(sutta);
+    } else if (subId === '02_sara' && typeof renderSaraWorkspace === 'function') {
+        renderSaraWorkspace(sutta);
+    } else {
+        renderSuttaWorkspace(sutta);
+    }
 }
 
 /**
- * ප්‍රධාන ඛාණ්ඩයක් තෝරා ගැනීම සහ නැවත ක්ලික් කළ විට හැකිලීම (Toggle)
+ * ප්‍රධාන ඛාණ්ඩයක් තෝරා ගැනීම
  */
 function selectKhanda(khandaKey) {
-    // විවෘතව ඇති ඛාණ්ඩයම ක්ලික් කළ විට හැකිලීම (Collapse)
     if (AppState.currentMode === 'khanda' && AppState.activeKhandaKey === khandaKey) {
         AppState.currentMode = 'intro';
         AppState.activeKhandaKey = null;
@@ -262,7 +235,6 @@ function selectKhanda(khandaKey) {
 
     renderKhandaTreeNavigation();
 
-    // පෙරනිමි පළමු අනුඛාණ්ඩය ස්වයංක්‍රීයව දිගහැරීම
     const currentKhandaConfig = KHANDAS_CONFIG.find(k => k.key === khandaKey);
     if (currentKhandaConfig && currentKhandaConfig.subCategories.length > 0) {
         toggleSubKhandaSuttas(currentKhandaConfig.subCategories[0].id);
@@ -292,14 +264,14 @@ function showShadakaraIntro() {
 
     renderKhandaTreeNavigation();
     
-    // shadakara-view.js හි ඇති නව එන්ජිම මඟින් සම්පූර්ණ ප්‍රවේශය Render කිරීම
+    // shadakara-view.js හි ඇති මොඩියුලය මඟින් Render කිරීම
     if (typeof renderShadakaraFullIntro === 'function') {
         renderShadakaraFullIntro();
     }
 }
 
 /**
- * රූප සටහනේ ආකාරයටම ෂඩාකාර කාඩ්පත් 6 (සූත්‍රයට අදාළ පාලි පාඨය සහිතව) Render කිරීම
+ * පෙරනිමි සූත්‍ර වැඩබිම Render කිරීම
  */
 function renderSuttaWorkspace(sutta) {
     const khandaConfig = KHANDAS_CONFIG.find(k => k.key === AppState.activeKhandaKey);
@@ -310,99 +282,71 @@ function renderSuttaWorkspace(sutta) {
 
     if (khandaBadge) khandaBadge.innerText = khandaConfig ? khandaConfig.name : '--';
     if (subBadge) subBadge.innerText = sutta.sub_khanda_name || '--';
-    if (titleEl) titleEl.innerText = sutta.sutta_name;
-    if (vuttiEl) vuttiEl.innerText = sutta.vutti;
+    if (titleEl) titleEl.innerText = sutta.sutta_name || sutta.sutta || '';
+    if (vuttiEl) vuttiEl.innerText = sutta.vutti || '';
 
     const shad = sutta.shadakara || {};
     const shadGrid = document.getElementById('displayShadakaraGrid');
 
-    // රූපයේ රතු පාට කොටු තුළ ඒ ඒ සූත්‍රයටම අදාළ පාලි පාඨය පෙන්වීම
     if (shadGrid) {
         shadGrid.innerHTML = `
-            <!-- 1. සම්බන්ධො -->
             <div class="shad-aspect-card">
                 <div class="shad-card-header">
                     <span class="shad-number-badge">1</span>
                     <h4 class="shad-card-title">සම්බන්ධො</h4>
                 </div>
-                <div class="shad-lakkhana-box">
-                    ${shad.sambandha_pali || "සුත්තෙ පුබ්බාපරපදානං එකවාක්‍යතාය යොජනා සම්බන්ධො"}
-                </div>
+                <div class="shad-lakkhana-box">${shad.sambandha_pali || "සුත්තෙ පුබ්බාපරපදානං එකවාක්‍යතාය යොජනා සම්බන්ධො"}</div>
                 <p class="shad-card-desc">${shad.sambandha || "--"}</p>
             </div>
-
-            <!-- 2. පදං -->
             <div class="shad-aspect-card">
                 <div class="shad-card-header">
                     <span class="shad-number-badge">2</span>
                     <h4 class="shad-card-title">පදං</h4>
                 </div>
-                <div class="shad-lakkhana-box">
-                    ${shad.pada_pali || "සුත්තෙ පදච්ඡෙදවසෙන පදං වෙදිතබ්බං"}
-                </div>
+                <div class="shad-lakkhana-box">${shad.pada_pali || "සුත්තෙ පදච්ඡෙදවසෙන පදං වෙදිතබ්බං"}</div>
                 <p class="shad-card-desc">${shad.pada || "--"}</p>
             </div>
-
-            <!-- 3. පදත්‍ථො -->
             <div class="shad-aspect-card">
                 <div class="shad-card-header">
                     <span class="shad-number-badge">3</span>
                     <h4 class="shad-card-title">පදත්‍ථො</h4>
                 </div>
-                <div class="shad-lakkhana-box">
-                    ${shad.padattha_pali || "සුත්තත්ථවසෙන පදත්‍ථො වෙදිතබ්බං"}
-                </div>
+                <div class="shad-lakkhana-box">${shad.padattha_pali || "සුත්තත්ථවසෙන පදත්‍ථො වෙදිතබ්බං"}</div>
                 <p class="shad-card-desc">${shad.padattha || "--"}</p>
             </div>
-
-            <!-- 4. පදවිග්ගහො -->
             <div class="shad-aspect-card">
                 <div class="shad-card-header">
                     <span class="shad-number-badge">4</span>
                     <h4 class="shad-card-title">පදවිග්ගහො</h4>
                 </div>
-                <div class="shad-lakkhana-box">
-                    ${shad.padaviggaha_pali || "සුත්තෙ විජ්ජමානසමාස-තද්ධිත-කිතකපදානං විග්ගහදස්සනං"}
-                </div>
+                <div class="shad-lakkhana-box">${shad.padaviggaha_pali || "සුත්තෙ විජ්ජමානසමාස-තද්ධිත-කිතකපදානං විග්ගහදස්සනං"}</div>
                 <p class="shad-card-desc">${shad.padaviggaha || "--"}</p>
             </div>
-
-            <!-- 5. චොදනා -->
             <div class="shad-aspect-card">
                 <div class="shad-card-header">
                     <span class="shad-number-badge">5</span>
                     <h4 class="shad-card-title">චොදනා</h4>
                 </div>
-                <div class="shad-lakkhana-box">
-                    ${shad.chodana_pali || "සුත්තෙ පදානං පයොජනාදිපුච්ඡනං චොදනා"}
-                </div>
+                <div class="shad-lakkhana-box">${shad.chodana_pali || "සුත්තෙ පදානං පයොජනාදිපුච්ඡනං චොදනා"}</div>
                 <p class="shad-card-desc">${shad.chodana || "--"}</p>
             </div>
-
-            <!-- 6. පරිහාරො -->
             <div class="shad-aspect-card">
                 <div class="shad-card-header">
                     <span class="shad-number-badge">6</span>
                     <h4 class="shad-card-title">පරිහාරො</h4>
                 </div>
-                <div class="shad-lakkhana-box">
-                    ${shad.parihara_pali || "සුත්තෙ පදානං සාත්ථකතාදිදස්සනවසෙන පරිහරණං පරිහාරො"}
-                </div>
+                <div class="shad-lakkhana-box">${shad.parihara_pali || "සුත්තෙ පදානං සාත්ථකතාදිදස්සනවසෙන පරිහරණං පරිහාරො"}</div>
                 <p class="shad-card-desc">${shad.parihara || "--"}</p>
             </div>
         `;
     }
 
-    // සූත්‍රයේ අතිරේක තොරතුරු පෙන්වීම
     renderExtraSuttaInformation(sutta);
-
-    // පද සාධන පියවර පෙන්වීම
     renderDerivationSection(sutta);
 }
 
 /**
- * සූත්‍රයේ අතිරේක ව්‍යාකරණ තොරතුරු පෙන්වීම
- * (අක්ෂර 41 ප්‍රදර්ශනය ඇතුළත්ව)
+ * සූත්‍රයේ අතිරේක ව්‍යාකරණ තොරතුරු හා අක්ෂර මාලාව පෙන්වීම
  */
 function renderExtraSuttaInformation(sutta) {
     const extraContainer = document.getElementById('extraSuttaDetailsBlock');
@@ -431,7 +375,6 @@ function renderExtraSuttaInformation(sutta) {
         </div>
     `;
 
-    // 02 වන සූත්‍රය සඳහා පාලි අක්ෂර මාලාව (අක්ෂර 41) ප්‍රදර්ශනය කිරීම
     if (sutta.akkhara_chart) {
         html += `
             <div class="akkhara-display-card">
@@ -465,7 +408,6 @@ function renderExtraSuttaInformation(sutta) {
         `;
     }
 
-    // ධ්වනි විද්‍යාත්මක ස්ථාන-කරණ-ප්‍රයත්න විවරණය
     if (sutta.phonetics_system) {
         html += `
             <div style="margin-top: 1rem; background: #FAF9F6; border: 1px solid var(--border-soft); padding: 1rem; border-radius: 8px;">
@@ -492,7 +434,6 @@ function renderExtraSuttaInformation(sutta) {
         `;
     }
 
-    // සන්න / ටීකා විශේෂ සටහන
     if (sutta.extended_commentary) {
         html += `
             <div style="margin-top: 0.8rem; background: #FDFBF7; border-left: 4px solid var(--theme-accent); padding: 0.8rem; font-size: 0.95rem;">
@@ -538,15 +479,15 @@ function renderDerivationTable(exampleObj) {
     const finalBox = document.getElementById('displayFinalWord');
     if (!tbody || !finalBox) return;
 
-    tbody.innerHTML = exampleObj.steps.map((st, i) => `
+    tbody.innerHTML = (exampleObj.steps || []).map((st, i) => `
         <tr>
             <td style="font-weight: 700; color: var(--text-muted); width: 50px;">${i + 1}</td>
-            <td style="font-weight: 600; font-size: 1.05rem;">${parseLopaCuts(st.formula)}</td>
-            <td><span class="rule-badge">${st.rule}</span></td>
+            <td style="font-weight: 600; font-size: 1.05rem;">${parseLopaCuts(st.formula || st.action)}</td>
+            <td><span class="rule-badge">${st.rule || '-'}</span></td>
         </tr>
     `).join('');
 
-    finalBox.innerText = exampleObj.final_result;
+    finalBox.innerText = exampleObj.final_result || exampleObj.word || '--';
 }
 
 function handleGlobalSearch(query) {
@@ -555,16 +496,17 @@ function handleGlobalSearch(query) {
 
     const items = document.querySelectorAll('.sutta-sub-item');
     AppState.currentSuttas.forEach((s, idx) => {
-        const matches = s.sutta_name.toLowerCase().includes(q) ||
-                        s.vutti.toLowerCase().includes(q) ||
-                        (s.examples && s.examples.some(e => e.word.toLowerCase().includes(q)));
+        const name = (s.sutta_name || s.sutta || '').toLowerCase();
+        const vutti = (s.vutti || '').toLowerCase();
+        const matches = name.includes(q) || vutti.includes(q) ||
+                        (s.examples && s.examples.some(e => (e.word || '').toLowerCase().includes(q)));
         if (items[idx]) {
             items[idx].style.display = matches ? 'block' : 'none';
         }
     });
 }
 
-// ආරම්භක ක්‍රියාත්මක වීම
+// ආරම්භක Initialization
 document.addEventListener('DOMContentLoaded', () => {
     const btnIntro = document.getElementById('btnShadakaraIntro');
     if (btnIntro) {
@@ -583,8 +525,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    showShadakaraIntro();
-
     const btnToggleSidebar = document.getElementById('btnToggleSidebar');
     const sidebarNav = document.querySelector('.sidebar-nav');
     const layoutContainer = document.querySelector('.layout-container');
@@ -593,17 +533,14 @@ document.addEventListener('DOMContentLoaded', () => {
     if (btnToggleSidebar) {
         btnToggleSidebar.addEventListener('click', () => {
             if (window.innerWidth <= 1024) {
-                // කුඩා තිර / Tablet වලදී Drawer ආකෘතියෙන් පෙන්වීම
                 if (sidebarNav) sidebarNav.classList.toggle('drawer-open');
                 if (sidebarOverlay) sidebarOverlay.classList.toggle('active');
             } else {
-                // පරිගණක තිරවලදී සඟවා Viewport එකට සම්පූර්ණ ඉඩ ලබාදීම
                 if (layoutContainer) layoutContainer.classList.toggle('sidebar-hidden');
             }
         });
     }
 
-    // Overlay එක ක්ලික් කළ විට Drawer එක වැසීම
     if (sidebarOverlay) {
         sidebarOverlay.addEventListener('click', () => {
             if (sidebarNav) sidebarNav.classList.remove('drawer-open');
@@ -611,5 +548,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ... app.js හි පවතින අනෙකුත් ආරම්භක කේත එලෙසම දිගටම පවතී ...
+    // ආරම්භයේදීම ෂඩාකාර හැඳින්වීම පෙන්වීම
+    showShadakaraIntro();
 });
