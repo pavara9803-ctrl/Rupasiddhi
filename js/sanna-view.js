@@ -1,9 +1,18 @@
 /**
  * ==========================================================================
  * සංඥා සූත්‍ර Rendering Controller එක (js/sanna-view.js)
- * පද සාධන කොටස සම්පූර්ණයෙන්ම ඉවත් කර සූත්‍ර විමර්ශනය හා අක්ෂර මාලාව පමණක් Render කරයි.
+ * සූත්‍රයේ තේරුම, වෘත්තිය, වෘත්තියේ පදයෙන් පද සන්නය (පාලි වචන Bold සහිතව), 
+ * ෂඩාකාරය, අක්ෂර මාලාව හා ධ්වනි විද්‍යාත්මක තොරතුරු Render කරයි.
  * ==========================================================================
  */
+
+// වෘත්තියේ පදයෙන් පද සන්නයේ පාලි වචන Bold කර හැඩගැන්වීමේ Helper ශ්‍රිතය
+function formatVuttiSanna(text) {
+    if (!text) return '';
+    // කොමාවකට (,) හෝ අර්ධ විරාමයකට (;) පෙර ඇති පාලි පදය තද පැහැයෙන් (Bold) දැක්වීම
+    // උදා: "තත්ථ, ඒ ප්‍රකරණයෙහි; ආදො, ආදියෙහි;" -> "<strong>තත්ථ</strong>, ඒ ප්‍රකරණයෙහි; <strong>ආදො</strong>, ආදියෙහි;"
+    return text.replace(/(^|[;\.\s]+)([\u0D80-\u0DFF]+(?:\s+[\u0D80-\u0DFF]+)?)(,)/g, '$1<strong class="sanna-pali-term">$2</strong>$3');
+}
 
 function renderSannaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
     const container = document.getElementById(targetContainerId);
@@ -15,13 +24,31 @@ function renderSannaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
             <div class="tag-row">
                 <span class="sanna-category-badge">සංඥා සූත්‍ර</span>
                 <span class="badge badge-khanda">සන්ධිකණ්ඩ</span>
+                ${suttaData.sutta_type ? `<span class="badge" style="background:#FAF2E6; color:#6B1D2F; border:1px solid #E6D0BA;">${suttaData.sutta_type}</span>` : ''}
             </div>
-            <h2 class="sanna-sutta-title">${suttaData.sutta_name || (suttaData.sutta_number + '. ' + suttaData.sutta)}</h2>
+            <h2 class="sanna-sutta-title">${suttaData.sutta_name || (suttaData.sutta_number + '. ' + (suttaData.sutta || ''))}</h2>
             
+            <!-- සූත්‍රයේ තේරුම (Sutta Meaning) -->
+            ${suttaData.sutta_meaning ? `
+                <div class="sanna-meaning-box">
+                    <span class="sanna-box-label">සූත්‍රයේ තේරුම:</span>
+                    <p style="margin: 0; font-weight: 600;">${suttaData.sutta_meaning}</p>
+                </div>
+            ` : ''}
+
+            <!-- සූත්‍ර වෘත්තිය (පාළි) -->
             ${suttaData.vutti ? `
                 <div class="sanna-vutti-box">
-                    <span class="vutti-label">වෘත්තිය:</span>
+                    <span class="vutti-label">සූත්‍ර වෘත්තිය (පාළි):</span>
                     <p class="sanna-vutti-text">${suttaData.vutti}</p>
+                </div>
+            ` : ''}
+
+            <!-- වෘත්තියේ පදයෙන් පද සන්නය (පාලි වචන Bold සහිතව) -->
+            ${suttaData.vutti_sanna ? `
+                <div class="sanna-vutti-sanna-box">
+                    <span class="sanna-box-label" style="color: #6B1D2F;">වෘත්තියේ පදයෙන් පද සන්නය:</span>
+                    <p class="sanna-sanna-text">${formatVuttiSanna(suttaData.vutti_sanna)}</p>
                 </div>
             ` : ''}
         </div>
@@ -36,16 +63,11 @@ function renderSannaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
             </div>
         ` : ''}
 
-        <!-- 03. සූත්‍ර අතිරේක විමර්ශන හා අක්ෂර පුවරුව (පද සාධන රහිතයි) -->
+        <!-- 03. සූත්‍ර අතිරේක විමර්ශන හා අක්ෂර පුවරුව -->
         <div class="panel-card">
             <h3 class="section-heading"><span class="heading-icon">📚</span> සූත්‍ර විමර්ශන අතිරේක තොරතුරු</h3>
             
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin-bottom: 1.2rem;">
-                ${suttaData.sutta_type ? `
-                    <div style="background: #FAF8F5; border: 1px solid var(--border-soft); padding: 0.8rem; border-radius: 6px;">
-                        <strong style="color: var(--theme-primary);">සූත්‍ර වර්ගය:</strong>
-                        <div>${suttaData.sutta_type}</div>
-                    </div>` : ''}
                 ${suttaData.pada_cheda ? `
                     <div style="background: #FAF8F5; border: 1px solid var(--border-soft); padding: 0.8rem; border-radius: 6px;">
                         <strong style="color: var(--theme-primary);">පදච්ඡේදය:</strong>
@@ -63,6 +85,23 @@ function renderSannaWorkspace(suttaData, targetContainerId = 'viewSuttaPanel') {
 
             <!-- ධ්වනි විද්‍යාත්මක ස්ථාන-කරණ-ප්‍රයත්න විවරණය -->
             ${suttaData.phonetics_system ? renderSannaPhonetics(suttaData.phonetics_system) : ''}
+
+            <!-- පරසමඤ්ඤා සූත්‍රයේ සංඥා නීති (Twenty One Rules) -->
+            ${suttaData.twenty_one_rules && suttaData.twenty_one_rules.length > 0 ? `
+                <div style="margin-top: 1.2rem;">
+                    <h4 style="color: var(--theme-primary); font-weight: 700; margin-bottom: 0.6rem;">
+                        📋 සංඥා නීති හා ප්‍රභේද විවරණය
+                    </h4>
+                    <div class="sanna-rules-grid">
+                        ${suttaData.twenty_one_rules.map(r => `
+                            <div class="sanna-rule-card">
+                                <strong>${r.num}. ${r.rule}</strong>
+                                <p>${r.content}</p>
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            ` : ''}
 
             <!-- ටීකා / සන්න විශේෂ සටහන -->
             ${suttaData.extended_commentary ? `
